@@ -151,7 +151,6 @@ if ($email != false) {
 							echo '<img class="dropbtn" alt="user" src="../uploaded_img/' . $image_url . '">';
 						}
 						?>
-						<!-- <img src="./images/user.webp" alt="user" class="dropbtn" /> -->
 					</a>
 					<div id="myDropdown" class="dropdown-content">
 						<a href="../update_profile.php">Update Profile</a>
