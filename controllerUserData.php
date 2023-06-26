@@ -176,6 +176,11 @@ if (isset($_POST['signup'])) {
         $errors['password'] = "Confirm password not matched!";
     }
 
+    // Check password strength
+    if (strlen($password) < 6 || !preg_match("#[0-9]+#", $password) || !preg_match("#[a-z]+#", $password) || !preg_match("#[A-Z]+#", $password) || !preg_match("#\W+#", $password)) {
+        $errors['password'] = "Password must be at least 6 characters and contain at least one number, one lowercase letter, one uppercase letter, and one special character.";
+    }
+
     $email_check = "SELECT * FROM usertable WHERE email = '$email'";
     $res = mysqli_query($con, $email_check);
 
@@ -215,6 +220,15 @@ if (isset($_POST['signup'])) {
             $errors['db-error'] = "Failed while inserting data into database!";
         }
     }
+    
+    // Display error messages
+    // if (!empty($errors)) {
+    //     $error_message = '';
+    //     foreach ($errors as $key => $value) {
+    //         $error_message .= "<p>$value</p>";
+    //     }
+    //     echo '<div class="alert alert-danger">' . $error_message . '</div>';
+    // }
 }
 
 
