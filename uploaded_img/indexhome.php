@@ -217,3 +217,172 @@ if ($email != false) {
 			}
 			echo '</div>';
 			?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+			// Fetch data from MySQL table
+			// Sanitize and set the sorting column
+			$sort = isset($_GET['sort']) ? htmlspecialchars($_GET['sort']) : 'title';
+
+			// Sanitize and set the sorting order
+			$order = isset($_GET['order']) && $_GET['order'] == 'desc' ? 'DESC' : 'ASC';
+
+			// Generate the sorting links/buttons
+			echo '<div style="padding-bottom: 20px; text-align: center;">';
+			echo '<p style="font-size: 20px; border: 2px solid green; display: inline-block; border-radius: 8px; padding: 10px; margin: 0;">';
+			echo 'Sort by:';
+			echo '<a style="padding: 10px;" href="?sort=likes&order=desc">Likes(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=views&order=desc">Views(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=title&order=desc">Name(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=date&order=asc">Date(&darr;)</a>';
+			echo '<a style="padding: 10px;" href="?sort=date&order=desc">Date(&uarr;)</a>|';
+			echo '</p>';
+			echo '</div>';
+
+			echo '<style>@media (max-width: 768px) { p { font-size: 16px; } a { display: block; padding: 5px; } }</style>';
+
+			// Build the SQL query using the selected sorting method and order
+			$sql = "SELECT * FROM medical_health ORDER BY $sort $order";
+			$sqlc = "SELECT * FROM comments";
+
+			// Execute the SQL query
+			$result = mysqli_query($con, $sql);
+			$resultc = mysqli_query($con, $sqlc);
+			// $rowc = mysqli_fetch_assoc($resultc);
+			
+			// Output HTML elements dynamically based on data
+			echo '<div class="dictionary">';
+			for ($index = 1; ($row = mysqli_fetch_assoc($result)); $index++) {
+				// Display the item with the unique id
+				$html = '<div class="dictionary-item">';
+				$html .= '<button aria-expanded="false" onclick="incrementViews(' . $row["id"] . ')">';
+				$html .= '<p class="title" id="' . $row["id"] . '">';
+				$html .= '<span class="bandage">' . $index . '</span>' . $row["title"];
+				$html .= '<span class="janakdate">Date: ' . $row["date"] . '</span>';
+				$html .= '<span class="janakcreators">By: ' . $row["creators"] . '</span>';
+				$html .= '<span class="janakviews">Views: ' . $row["views"] . '</span>';
+				$html .= '<span title="Please like it" onclick="incrementLikes(' . $row["id"] . ')" class="janaklikes">';
+				$html .= '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(32, 9, 216, 1);transform: ;msFilter:;"><path d="M4 21h1V8H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2zM20 8h-7l1.122-3.368A2 2 0 0 0 12.225 2H12L7 7.438V21h11l3.912-8.596L22 12v-2a2 2 0 0 0-2-2z"></path></svg> ' . $row["likes"] . '</span>';
+				$html .= '</p>';
+				$html .= '<span class="iconplus"></span>';
+				$html .= '</button>';
+				$html .= '<div class="WDescription">';
+				$html .= '<h1>' . $row["description"];
+				while ($rowc = mysqli_fetch_assoc($resultc)) {
+					if ($row["id"] == $rowc["id"]) {
+						$html .= '<hr><div><span style="background: #a6a6ad;padding: 2px;font-size:18px;">By: ' . $rowc['namec'] . '</span> <br><p style="margin: 0 0 0 44px;font-size:18px;">  ' . $rowc["descriptionc"] . '</p></div>';
+					}
+				}
+				
+
+
+				$html .= '</h1>';
+				$html .= '<center><form action="comments.php" method="post">';
+				$html .= '<input name="titleid" hidden value="' . $row["id"] . '"/>';
+				$html .= '<input type="text" name="namec" hidden value="' . $fetch_info['name'] . '"/>';
+				$html .= '<input type="text" name="titlec" hidden value="' . $row['title'] . '"/>';
+				$html .= '<textarea rows="10" style="width: 50%;" type="text" name="descriptionc" placeholder="Add your comment..."></textarea>';
+				$html .= '<button style="width: 89px !important;padding: 10px;color: white;border-radius: 8px;margin-bottom: 10px;background: blue !important;text-align: center;" type="submit">Submit</button>';
+				$html .= '</form></center>';
+				$html .= '</div>';
+				$html .= '</div>';
+
+				echo $html;
+			}
+			echo '</div>';
+			?>
+
+
+
+
+
+
+<?php
+			// Fetch data from MySQL table
+			// Sanitize and set the sorting column
+			$sort = isset($_GET['sort']) ? htmlspecialchars($_GET['sort']) : 'title';
+
+			// Sanitize and set the sorting order
+			$order = isset($_GET['order']) && $_GET['order'] == 'desc' ? 'DESC' : 'ASC';
+
+			// Generate the sorting links/buttons
+			echo '<div style="padding-bottom: 20px; text-align: center;">';
+			echo '<p style="font-size: 20px; border: 2px solid green; display: inline-block; border-radius: 8px; padding: 10px; margin: 0;">';
+			echo 'Sort by:';
+			echo '<a style="padding: 10px;" href="?sort=likes&order=desc">Likes(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=views&order=desc">Views(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=title&order=desc">Name(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=date&order=asc">Date(&darr;)</a>';
+			echo '<a style="padding: 10px;" href="?sort=date&order=desc">Date(&uarr;)</a>|';
+			echo '</p>';
+			echo '</div>';
+
+			echo '<style>@media (max-width: 768px) { p { font-size: 16px; } a { display: block; padding: 5px; } }</style>';
+
+			// Build the SQL query using the selected sorting method and order
+			$sql = "SELECT * FROM medical_health ORDER BY $sort $order";
+			$sqlc = "SELECT * FROM comments";
+
+			// Execute the SQL query
+			$result = mysqli_query($con, $sql);
+			$resultc = mysqli_query($con, $sqlc);
+			// $rowc = mysqli_fetch_assoc($resultc);
+			
+			// Output HTML elements dynamically based on data
+			echo '<div class="dictionary">';
+			for ($index = 1; ($row = mysqli_fetch_assoc($result)); $index++) {
+				// Display the item with the unique id
+				$html = '<div class="dictionary-item" id="title-' . $row["id"] . '">';
+
+				$html .= '<button aria-expanded="false" onclick="incrementViews(' . $row["id"] . ')">';
+				$html .= '<p class="title" >';
+				$html .= '<span class="bandage">' . $index . '</span>' . $row["title"];
+				$html .= '<span class="janakdate">Date: ' . $row["date"] . '</span>';
+				$html .= '<span class="janakcreators">By: ' . $row["creators"] . '</span>';
+				$html .= '<span class="janakviews">Views: ' . $row["views"] . '</span>';
+				$html .= '<span title="Please like it" onclick="incrementLikes(' . $row["id"] . ')" class="janaklikes">';
+				$html .= '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(32, 9, 216, 1);transform: ;msFilter:;"><path d="M4 21h1V8H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2zM20 8h-7l1.122-3.368A2 2 0 0 0 12.225 2H12L7 7.438V21h11l3.912-8.596L22 12v-2a2 2 0 0 0-2-2z"></path></svg> ' . $row["likes"] . '</span>';
+				$html .= '</p>';
+				$html .= '<span class="iconplus"></span>';
+				$html .= '</button>';
+
+				$html .= '<div class="WDescription">';
+				$html .= '<h1>' . $row["description"];
+
+				while ($rowc = mysqli_fetch_assoc($resultc)) {
+					if ($row["id"] == $rowc["id"] && $rowc["descriptionc"] != "") {
+						$html .= '<hr><div><span style="background: #a6a6ad;padding: 2px;font-size:18px;">By: ' . $rowc['namec'] . '</span> <br><p style="margin: 0 0 0 44px;font-size:18px;">  ' . $rowc["descriptionc"] . '</p></div>';
+					}
+				}
+
+				$html .= '</h1>';
+
+				$html .= '<center><form action="comments.php" method="post">';
+				$html .= '<input name="titleid" hidden value="' . $row["id"] . '"/>';
+				$html .= '<input type="text" name="namec" hidden value="' . $fetch_info['name'] . '"/>';
+				$html .= '<input type="text" name="titlec" hidden value="' . $row['title'] . '"/>';
+				$html .= '<textarea rows="10" style="width: 50%;" type="text" name="descriptionc" placeholder="Add your comment..." required></textarea>';
+				$html .= '<button style="width: 89px !important;padding: 10px;color: white;border-radius: 8px;margin-bottom: 10px;background: blue !important;text-align: center;" type="submit">Submit</button>';
+				$html .= '</form></center>';
+
+				$html .= '</div>';
+				$html .= '</div>';
+
+				echo $html;
+			}
+			echo '</div>';
+			?>

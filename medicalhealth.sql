@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2023 at 11:18 AM
+-- Generation Time: Jun 26, 2023 at 07:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -28,18 +28,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comments` (
-  `id` int(11) NOT NULL,
-  `namec` varchar(25) NOT NULL DEFAULT '',
+  `s.n` int(11) NOT NULL,
+  `id` int(25) NOT NULL,
+  `namec` varchar(25) NOT NULL DEFAULT '0',
   `titlec` varchar(50) NOT NULL DEFAULT '',
-  `descriptionc` text NOT NULL DEFAULT ''
+  `descriptionc` text NOT NULL DEFAULT '\'0\''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`id`, `namec`, `titlec`, `descriptionc`) VALUES
-(691, 'Janak', 'janak', 'Nice Work..!');
+INSERT INTO `comments` (`s.n`, `id`, `namec`, `titlec`, `descriptionc`) VALUES
+(27, 1, 'Sita', 'Abdomen ', 'I am sita.'),
+(28, 1, 'Sita', 'Abdomen ', 'update '),
+(29, 1, 'Janak shrestha', 'Abdomen ', 'I am janak'),
+(30, 1, 'Ganga', 'Abdomen ', 'I an ganga'),
+(31, 2, 'Ganga', 'Ablation', 'game '),
+(32, 2, 'Ganga', 'Ablation', 'ganga\r\n');
 
 -- --------------------------------------------------------
 
@@ -84,49 +90,49 @@ CREATE TABLE `medical_health` (
 --
 
 INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`, `views`, `date`) VALUES
-(1, 'Abdomen ', 'Abdomen is the area of the body between the thorax and the pelvis that encloses major organs of the digestive system.', 'Saraswoti', 3, 5, '2023-06-17'),
-(2, 'Ablation', 'Ablation is the surgical removal or excision of a diseased body part or tissue.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(3, 'Abscess', 'Abscess is localised collection of pus, that develops as an immune reaction to infection. The skin surrounding the inflamed area is usually red and painful.', 'Saraswoti', 0, 4, '2023-06-17'),
-(4, 'Acid Reflux or Gastro-Oesophageal Reflux Disease (GORD)', 'Acid reflux or Gastro-Oesophageal Reflux Disease (GORD) is an abnormal back flow or regurgitation of acidic contents from the stomach into the  oesophagus.', 'Nepali Kan', 1, 3, '2023-06-17'),
-(5, 'Acne ', 'Acne is a common inflammatory skin disease characterised by pimples on the face, chest and back, that occur due to clogging of skin pores with oil, dead skin cells or bacteria.', 'Saraswoti', 0, 3, '2023-06-17'),
-(6, 'Acquired Immunodeficiency Syndrome(AIDS)', 'Acquired Immunodeficiency Syndrome (AIDS) is a severe immunological condition caused by the human immunodeficiency virus (HIV). AIDS increases susceptibility to opportunistic infections and cancers due to the defect in cell-mediated immune response.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(7, 'Acromegaly', 'Acromegaly is the disorder characterised by progressive enlargement of the skull, jaw, hands, feet and also of internal organs due to the excessive release of growth hormone from the pituitary gland. ', 'Saraswoti', 0, 3, '2023-06-17'),
-(8, 'Actin', 'Actin is a protein abundantly present in the muscle cells and participates in many important cellular processes including muscle contraction, cell division, cell movement and shape.', 'Nepali Kan', 1, 4, '2023-06-17'),
-(9, 'Adam\'s apple	', 'Adam\'s apple is the protrusion in the front of the throat formed by the projecting thyroid cartilage. The Adam\'s apple is more prominent in men than in women.', 'Saraswoti', 0, 3, '2023-06-17'),
-(10, 'Adenitis', 'Adenitis is the inflammation of a gland or lymph node.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(11, 'Adenocarcinoma', 'Adenocarcinoma, most often referred to as prostate cancer or glandular carcinoma, is a cancer that develops in the prostate, an exocrine gland in the male reproductive system.', 'Saraswoti', 0, 3, '2023-06-17'),
-(12, 'Adenoids', 'Adenoids are a mass of lymphoid tissue that trap and destroy pathogens, located at the very back of the nose where it blends into the mouth. Swelling of the adenoids obstructs normal breathing and makes speech difficult.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(13, 'Adenosine triphosphate (ATP)', 'ATP is an energy carrying molecule present in every cell. Present in the cytoplasm and nucleoplasm of each cell, ATP is essential for all physiological mechanisms that require energy, and is continuously recycled by the human body.', 'Saraswoti', 0, 3, '2023-06-17'),
-(14, 'Adipose tissue', 'Adipose tissue is a loose connective tissue that stores cellular fat. ', 'Nepali Kan', 1, 2, '2023-06-17'),
-(15, 'Adrenal glands', 'Adrenal glands or suprarenal glands are two triangular endocrine glands located one on top of each kidney.', 'Saraswoti', 0, 3, '2023-06-17'),
-(16, 'Adrenaline', 'Adrenaline, also called epinephrine, is a hormone synthesised in the adrenal medulla within the adrenal gland and secreted in response to stress and stimulates autonomic nerve action. This hormone secretion is part of the ‘fight or flight’ reactions - quickening of heart beat, opening up of bronchioles in the lungs, etc - which a body has in response to physical or psychological stress.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(1, 'Abdomen ', 'Abdomen is the area of the body between the thorax and the pelvis that encloses major organs of the digestive system.', 'Saraswoti', 23, 111, '2023-06-17'),
+(2, 'Ablation', 'Ablation is the surgical removal or excision of a diseased body part or tissue.', 'Nepali Kan', 4, 37, '2023-06-17'),
+(3, 'Abscess', 'Abscess is localised collection of pus, that develops as an immune reaction to infection. The skin surrounding the inflamed area is usually red and painful.', 'Saraswoti', 1, 26, '2023-06-17'),
+(4, 'Acid Reflux or Gastro-Oesophageal Reflux Disease (GORD)', 'Acid reflux or Gastro-Oesophageal Reflux Disease (GORD) is an abnormal back flow or regurgitation of acidic contents from the stomach into the  oesophagus.', 'Nepali Kan', 4, 20, '2023-06-17'),
+(5, 'Acne ', 'Acne is a common inflammatory skin disease characterised by pimples on the face, chest and back, that occur due to clogging of skin pores with oil, dead skin cells or bacteria.', 'Saraswoti', 0, 9, '2023-06-17'),
+(6, 'Acquired Immunodeficiency Syndrome(AIDS)', 'Acquired Immunodeficiency Syndrome (AIDS) is a severe immunological condition caused by the human immunodeficiency virus (HIV). AIDS increases susceptibility to opportunistic infections and cancers due to the defect in cell-mediated immune response.', 'Nepali Kan', 1, 3, '2023-06-17'),
+(7, 'Acromegaly', 'Acromegaly is the disorder characterised by progressive enlargement of the skull, jaw, hands, feet and also of internal organs due to the excessive release of growth hormone from the pituitary gland. ', 'Saraswoti', 0, 4, '2023-06-17'),
+(8, 'Actin', 'Actin is a protein abundantly present in the muscle cells and participates in many important cellular processes including muscle contraction, cell division, cell movement and shape.', 'Nepali Kan', 2, 7, '2023-06-17'),
+(9, 'Adam\'s apple	', 'Adam\'s apple is the protrusion in the front of the throat formed by the projecting thyroid cartilage. The Adam\'s apple is more prominent in men than in women.', 'Saraswoti', 1, 9, '2023-06-17'),
+(10, 'Adenitis', 'Adenitis is the inflammation of a gland or lymph node.', 'Nepali Kan', 6, 16, '2023-06-17'),
+(11, 'Adenocarcinoma', 'Adenocarcinoma, most often referred to as prostate cancer or glandular carcinoma, is a cancer that develops in the prostate, an exocrine gland in the male reproductive system.', 'Saraswoti', 0, 5, '2023-06-17'),
+(12, 'Adenoids', 'Adenoids are a mass of lymphoid tissue that trap and destroy pathogens, located at the very back of the nose where it blends into the mouth. Swelling of the adenoids obstructs normal breathing and makes speech difficult.', 'Nepali Kan', 5, 9, '2023-06-17'),
+(13, 'Adenosine triphosphate (ATP)', 'ATP is an energy carrying molecule present in every cell. Present in the cytoplasm and nucleoplasm of each cell, ATP is essential for all physiological mechanisms that require energy, and is continuously recycled by the human body.', 'Saraswoti', 7, 13, '2023-06-17'),
+(14, 'Adipose tissue', 'Adipose tissue is a loose connective tissue that stores cellular fat. ', 'Nepali Kan', 4, 6, '2023-06-17'),
+(15, 'Adrenal glands', 'Adrenal glands or suprarenal glands are two triangular endocrine glands located one on top of each kidney.', 'Saraswoti', 2, 5, '2023-06-17'),
+(16, 'Adrenaline', 'Adrenaline, also called epinephrine, is a hormone synthesised in the adrenal medulla within the adrenal gland and secreted in response to stress and stimulates autonomic nerve action. This hormone secretion is part of the ‘fight or flight’ reactions - quickening of heart beat, opening up of bronchioles in the lungs, etc - which a body has in response to physical or psychological stress.', 'Nepali Kan', 1, 4, '2023-06-17'),
 (17, 'Adrenocorticotrophic Hormone (ACTH) ', 'Adrenocorticotropic hormone (ACTH) is secreted by the anterior pituitary gland and stimulates the growth of the adrenal cortex and the secretion of corticosteriods by the adrenal glands. ACTH is released by the pituitary gland in short bursts, for every few hours.  ', 'Saraswoti', 0, 3, '2023-06-17'),
-(18, 'Albinism', 'Albinism is a genetic disorder characterised by total or partial lack of melanin pigment production in the skin, hair or eyes. This results in discolouration of skin, grey hair and pink eye.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(18, 'Albinism', 'Albinism is a genetic disorder characterised by total or partial lack of melanin pigment production in the skin, hair or eyes. This results in discolouration of skin, grey hair and pink eye.', 'Nepali Kan', 1, 3, '2023-06-17'),
 (19, 'Albumin', 'Albumin, synthesised in the liver, is a water soluble protein present in the blood plasma. It contributes to the regulation of osmosis and helps transport fats, hormones, drugs and other substances through the blood.', 'Saraswoti', 0, 3, '2023-06-17'),
-(20, 'Albuminuria', 'Albuminuria is a pathological condition where more than normal amounts of albumin are present in the urine. High levels of albumin in the urine may be an indication of kidney disease.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(20, 'Albuminuria', 'Albuminuria is a pathological condition where more than normal amounts of albumin are present in the urine. High levels of albumin in the urine may be an indication of kidney disease.', 'Nepali Kan', 1, 3, '2023-06-17'),
 (21, 'Alcoholic liver disease', 'Alcoholic liver disease is damage caused by toxic effects of excessive intake of alcohol. The disease progresses in three different stages - fatty liver, hepatitis and cirrhosis.', 'Saraswoti', 0, 3, '2023-06-17'),
 (22, 'Aldosterone', 'Aldosterone is a corticosteroid hormone secreted by the cortex of adrenal glands. This hormone secreted in response to low salt levels, regulates electrolyte and water balance.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (23, 'Alimentary tract', 'Alimentary tract or the digestive tract is a tubular passage that extends from the oral cavity to the anus. Ingestion, digestion, absorption and defecation are the major functions of the alimentary canal. ', 'Saraswoti', 0, 3, '2023-06-17'),
 (24, 'Allergic Rhinitis', 'Allergic Rhinitis or Hay fever is an allergic reaction to pollen, dust or cold affecting the sinus and upper respiratory tract. It is characterised by runny nose, sneezing, itchy throat and eyes. ', 'Nepali Kan', 1, 2, '2023-06-17'),
-(25, 'Allergy', 'Allergy is an abnormal reaction of the immune system induced by exposure to a particular substance like food, pollen or dust that manifests as a physiological reaction, which is otherwise harmless.', 'Saraswoti', 0, 3, '2023-06-17'),
+(25, 'Allergy', 'Allergy is an abnormal reaction of the immune system induced by exposure to a particular substance like food, pollen or dust that manifests as a physiological reaction, which is otherwise harmless.', 'Saraswoti', 2, 10, '2023-06-17'),
 (26, 'Alveolus', 'Alveolus (Plural: Alveoli) are tiny, thin-walled, capillary-rich, air sacs arranged in clusters deep within the lungs where exchange of oxygen and carbon-di-oxide takes place.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(27, 'Alzheimer\'s disease', 'Alzheimer\'s disease (AD) is a progressive neurodegenerative disease, which results in a gradual loss of mental functions due to the deterioration of brain tissue. It is the most common cause of dementia.', 'Saraswoti', 0, 3, '2023-06-17'),
-(28, 'Amnesia', 'Amnesia is a partial or total loss of memory. Damage to the part of the brain that stores, processes and recalls memory causes amnesia, and could be the initial symptoms of some neurodegenerative diseases.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(29, 'Amniocentesis', 'Amniocentesis or amniotic fluid test is a medical procedure used for prenatal diagnosis of genetic abnormalities. In this procedure small amounts of the amniotic fluid, which contains foetal tissue, is withdrawn from the amniotic sac and the foetal DNA is examined.', 'Saraswoti', 0, 3, '2023-06-17'),
+(27, 'Alzheimer\'s disease', 'Alzheimer\'s disease (AD) is a progressive neurodegenerative disease, which results in a gradual loss of mental functions due to the deterioration of brain tissue. It is the most common cause of dementia.', 'Saraswoti', 0, 4, '2023-06-17'),
+(28, 'Amnesia', 'Amnesia is a partial or total loss of memory. Damage to the part of the brain that stores, processes and recalls memory causes amnesia, and could be the initial symptoms of some neurodegenerative diseases.', 'Nepali Kan', 1, 3, '2023-06-17'),
+(29, 'Amniocentesis', 'Amniocentesis or amniotic fluid test is a medical procedure used for prenatal diagnosis of genetic abnormalities. In this procedure small amounts of the amniotic fluid, which contains foetal tissue, is withdrawn from the amniotic sac and the foetal DNA is examined.', 'Saraswoti', 1, 5, '2023-06-17'),
 (30, 'Amniotic fluid test', 'Amniotic fluid test or amniocentesis is a medical procedure used for prenatal diagnosis of genetic abnormalities. In this procedure small amounts of the amniotic fluid, which contains foetal tissue, is withdrawn from the amniotic sac and the foetal DNA is examined.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(31, 'Amniotic sac', 'Amniotic sac is a thin, membranous, fluid filled sac that surrounds the developing foetus in the uterus.', 'Saraswoti', 0, 3, '2023-06-17'),
-(32, 'Ampulla', 'Ampulla is a sac-like enlargement of a canal or duct. The term is used to describe several anatomical structures like Ampulla of Vater or hepatopancreatic ampulla, i.e., the enlargement of ducts from the liver and pancreas where they enter the small intestine.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(31, 'Amniotic sac', 'Amniotic sac is a thin, membranous, fluid filled sac that surrounds the developing foetus in the uterus.', 'Saraswoti', 0, 4, '2023-06-17'),
+(32, 'Ampulla', 'Ampulla is a sac-like enlargement of a canal or duct. The term is used to describe several anatomical structures like Ampulla of Vater or hepatopancreatic ampulla, i.e., the enlargement of ducts from the liver and pancreas where they enter the small intestine.', 'Nepali Kan', 1, 3, '2023-06-17'),
 (33, 'Anabolism', 'Anabolism is the constructive metabolic process of the body that synthesises complex molecules of the living tissue such as fats and proteins, from simpler molecules when the body uses the food energy to build or repair cells.', 'Saraswoti', 0, 3, '2023-06-17'),
-(34, 'Anaemia', 'Anaemia is the condition in which the oxygen-carrying haemoglobin concentration in the blood is below a defined level. Anaemia can cause fatigue, weakness, dizziness and drowsiness.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(34, 'Anaemia', 'Anaemia is the condition in which the oxygen-carrying haemoglobin concentration in the blood is below a defined level. Anaemia can cause fatigue, weakness, dizziness and drowsiness.', 'Nepali Kan', 1, 3, '2023-06-17'),
 (35, 'Anaerobes ', 'Anaerobes are organisms that can live and grow in complete or partial absence of oxygen.', 'Saraswoti', 0, 3, '2023-06-17'),
 (36, 'Anaesthesia', 'Anaesthesia refers to the loss of sensation to touch or pain with or without loss of consciousness. Drug induced anesthesia is the means for medical purposes to prevent pain sensation.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(37, 'Analgesia', 'Analgesia refers to a state of reduced or loss of sensibility to pain; pain relief without loss of consciousness.', 'Saraswoti', 0, 3, '2023-06-17'),
+(37, 'Analgesia', 'Analgesia refers to a state of reduced or loss of sensibility to pain; pain relief without loss of consciousness.', 'Saraswoti', 0, 4, '2023-06-17'),
 (38, 'Androgens', 'Androgens are naturally occurring or synthetic steroid hormones that control or stimulate the development and maintenance of masculine characteristics. Example, testosterone.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(39, 'Aneurysm', 'Aneurysm is a localised blood filled widening or dilatation of an artery or a vein due to weakening of the blood vessel wall. This bulging may lead to rupture of the blood vessel wall.', 'Saraswoti', 0, 3, '2023-06-17'),
+(39, 'Aneurysm', 'Aneurysm is a localised blood filled widening or dilatation of an artery or a vein due to weakening of the blood vessel wall. This bulging may lead to rupture of the blood vessel wall.', 'Saraswoti', 1, 4, '2023-06-17'),
 (40, 'Angina', 'Angina is chest pain, discomfort or chocking sensation or muscle spasm caused by insufficient blood supply to the heart muscle. This is a symptom of coronary artery disease.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (41, 'Angiogenesis', 'Angiogenesis is the physiological process of developing new blood vessels. It is a vital and normal process in growth and development, as well as in wound healing.', 'Saraswoti', 0, 3, '2023-06-17'),
 (42, 'Angiography', 'Angiography is a diagnostic imaging procedure done to examine blood vessels using X-rays, after injecting a radio-opaque substance to outline them. This procedure helps identify tumours, blood clots or atherosclerotic plaque.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(43, 'Ankylosing Spondylitis', 'Ankylosing spondylitis is the chronic inflammation of joints between the vertebrae or between the spine and pelvis. Also known as rheumatoid spondylitis or Marie-Strümpell disease, it is marked by impaired mobility of the spine, pain, stiffness in the hips and lower back. The pain progresses to the upper back, eventually affecting the entire back, resulting in loss of flexibility.', 'Saraswoti', 0, 3, '2023-06-17'),
+(43, 'Ankylosing Spondylitis', 'Ankylosing spondylitis is the chronic inflammation of joints between the vertebrae or between the spine and pelvis. Also known as rheumatoid spondylitis or Marie-Strümpell disease, it is marked by impaired mobility of the spine, pain, stiffness in the hips and lower back. The pain progresses to the upper back, eventually affecting the entire back, resulting in loss of flexibility.', 'Saraswoti', 0, 4, '2023-06-17'),
 (44, 'Ankylosis', 'Ankylosis is the immobility and stiffness of a joint as a result of fusion due to injury, disease or surgery, resulting in loss of movement.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (45, 'Anthrax', 'Anthrax is an acute infection caused by the spore forming bacterium Bacillus anthracis, a microbe that lives in soil, which mainly affects livestock. Humans are infected through skin contact, ingestion or inspiration of spores from infected animals or animal products. The most common form of infection in humans is cutaneous anthrax which affects the skin and pulmonary anthrax affecting lungs, characterised by ulcerative skin lesions and severe breathing problems, respectively.', 'Saraswoti', 0, 3, '2023-06-17'),
 (46, 'Anti-Diuretic Hormone (ADH)', 'Anti-diuretic hormone (ADH) or vasopressin is a hormone produced by the hypothalamus and stored in the posterior pituitary gland. It enhances water resorption in the tubules of the kidney, increases peristalsis and constricts blood vessels, thus increasing the blood pressure.', 'Nepali Kan', 1, 2, '2023-06-17'),
@@ -134,19 +140,19 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`,
 (48, 'Antibodies ', 'Antibodies or immunoglobulins are immune proteins found in blood or lymph, and produced by B lymphocytes as an immune defence against foreign substances (antigens). They combine with the very antigen that triggers their synthesis to neutralize their action.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (49, 'Antigen', 'Antigens or immunogens are substances that can stimulate an immune response by producing antibodies against it. Antigens can be proteins or polysaccharides of microorganisms, toxins, foreign blood cells, cells of transplanted organs, etc.', 'Saraswoti', 0, 3, '2023-06-17'),
 (50, 'Aorta', 'Aorta is the largest artery in the body, originating from the left ventricle of the heart. This main trunk branches into the arterial system that carries oxygenated blood to other parts of the body. ', 'Nepali Kan', 1, 2, '2023-06-17'),
-(51, 'Apgar score', 'Apgar score is a test performed to quickly asses the health of the newborn in order to determine the need for extra medical or emergency care. The test is based on five factors - activity and muscle tone, pulse, grimace response, appearance and respiration.', 'Saraswoti', 0, 3, '2023-06-17'),
-(52, 'Apocrine gland', 'Apocrine glands are large, specialised glands generally associated with hair follicles, and found in the skin, breast, eyelid and ear. These glands produce odourless viscous secretions that take on a foul smell on contact with skin surface bacteria.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(51, 'Apgar score', 'Apgar score is a test performed to quickly asses the health of the newborn in order to determine the need for extra medical or emergency care. The test is based on five factors - activity and muscle tone, pulse, grimace response, appearance and respiration.', 'Saraswoti', 0, 4, '2023-06-17'),
+(52, 'Apocrine gland', 'Apocrine glands are large, specialised glands generally associated with hair follicles, and found in the skin, breast, eyelid and ear. These glands produce odourless viscous secretions that take on a foul smell on contact with skin surface bacteria.', 'Nepali Kan', 1, 3, '2023-06-17'),
 (53, 'Appendicitis', 'Appendicitis is the inflammation of the appendix, a small appendage to the colon. The condition is mainly characterised by pain that typically begins around the navel and then shifts to the lower right abdomen.', 'Saraswoti', 0, 3, '2023-06-17'),
 (54, 'Appendix', 'Appendix is a small finger like pouch and a vestigial projection measuring about 3-4 inches attached to the cecum or the beginning of the large intestine. ', 'Nepali Kan', 1, 2, '2023-06-17'),
 (55, 'Aqueous humour', 'Aqueous humour is the thin, clear, nourishing fluid that circulates between the lens and cornea. Constantly secreted by the ciliary body, the aqueous humour maintains intraocular pressure that gives the eyeball (globe) its shape.', 'Saraswoti', 0, 3, '2023-06-17'),
 (56, 'Arrhythmia', 'Arrhythmia is abnormal heart rate or rhythm. Irregular patterns in heart beat may be due to abnormal electrical impulse that orignates in the atrial chambers, known as premature atrial contractions, or in the ventricular chambers, known as permature ventricular contractions.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (57, 'Arthritis ', 'Arthritis is a painful degenerative joint disease with inflammation, stiffness and pain in the associated joints. ', 'Saraswoti', 0, 3, '2023-06-17'),
-(58, 'Arthroplasty', 'Arthroplasty is a surgical procedure to realign or reconstruct a joint.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(58, 'Arthroplasty', 'Arthroplasty is a surgical procedure to realign or reconstruct a joint.', 'Nepali Kan', 1, 3, '2023-06-17'),
 (59, 'Ascites', 'Ascites is the abnormal accumulation of fluid in the abdominal cavity that causes abdominal swelling and pain. It can occur as a result of liver disease or presence of malignant cells like ovarian cancer cells within the abdomen.', 'Saraswoti', 0, 3, '2023-06-17'),
-(60, 'Aspergillus', 'Aspergillus is a genus of fungus that includes several common molds growing on decaying plants. Apergillosis is the common disease caused Aspergillus, characterised by cough, fever and chest pain. ', 'Nepali Kan', 1, 2, '2023-06-17'),
+(60, 'Aspergillus', 'Aspergillus is a genus of fungus that includes several common molds growing on decaying plants. Apergillosis is the common disease caused Aspergillus, characterised by cough, fever and chest pain. ', 'Nepali Kan', 1, 3, '2023-06-17'),
 (61, 'Aspiration', 'Aspiration is a process of removing fluids, gases or bone fragments from an area of the body by means of suction using an aspirator.', 'Saraswoti', 0, 3, '2023-06-17'),
 (62, 'Asthma ', 'Asthma is a chronic inflammatory pulmonary disorder characterised by narrowing of the bronchial tubes that are inflamed and constricted, causing shortness of breath, wheezing and cough.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(63, 'Astigmatism ', 'Astigmatism is an optical defect caused by irregularities in the cornea or lens of the eye, leading to blurred vision or distorted image.', 'Saraswoti', 0, 3, '2023-06-17'),
+(63, 'Astigmatism ', 'Astigmatism is an optical defect caused by irregularities in the cornea or lens of the eye, leading to blurred vision or distorted image.', 'Saraswoti', 1, 4, '2023-06-17'),
 (64, 'Atheroma', 'Atheroma is the plaque deposition between the endothelium lining and smooth muscle wall of an artery, and consequent swelling that occur in atherosclerosis. The plaque contains macrophage cells, lipids, blood products and calcium.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (65, 'Atherosclerosis ', 'Atherosclerosis is a condition in which there is accumulation of cholesterol, cellular waste products, calcium and other substances in the inner lining of the coronary artery, resulting in plaque formation.', 'Saraswoti', 0, 3, '2023-06-17'),
 (66, 'Atrium (Plural: Atria)', 'Atria - the right and the left atrium - are the two upper chambers of the heart that receive blood as it returns to the heart to complete a circulating cycle. The two atria contract at the same time after the right atrium receives de-oxygenated blood from the body through the superior and inferior vena cava, and the left atrium receives oxygenated blood from the lungs through the pulmonary vein.', 'Nepali Kan', 1, 2, '2023-06-17'),
@@ -154,12 +160,12 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`,
 (68, 'Auditory nerve', 'Auditory nerve is the nerve that connects the inner ear with the brain. These eighth pair of cranial nerves transmit sensory impulses concerned with hearing and balance.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (69, 'Auditory tube', 'Auditory tube or eustachian tube or pharyngotympanic tube, is a slender cartilage tube lined with mucus memebrane, which connects the middle ear with the nasopharynx. Its main function is to equalise atmospheric pressure in the middle ear.', 'Saraswoti', 0, 3, '2023-06-17'),
 (70, 'Auricle', 'Auricle, also called Pinna, is the externally visible part of the ear.', 'Nepali Kan', 1, 2, '2023-06-17'),
-(71, 'Autism', 'Autism is a developmental disability caused by a neurological disorder that typically appears in the first three years of a child. Autism affects parts of the brain concerning social interaction and communication, and is characterised by difficulties in verbal and non-verbal communication and extremely limited range of activities.', 'Saraswoti', 0, 3, '2023-06-17'),
+(71, 'Autism', 'Autism is a developmental disability caused by a neurological disorder that typically appears in the first three years of a child. Autism affects parts of the brain concerning social interaction and communication, and is characterised by difficulties in verbal and non-verbal communication and extremely limited range of activities.', 'Saraswoti', 4, 4, '2023-06-17'),
 (72, 'Autoimmunity', 'Autoimmunity is a condition in which the immune system initiates reactions against the body\'s own cells and tissues.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (73, 'Background retinopathy ', 'Retinopathy is a term that refers to non-inflammatory damage to the retina of the eye. Background retinopathy occurs due to uncontrolled blood sugar levels and manifests as tiny red dots on the eye called microaneurysms associated with hemorrhages and hard exudates.', 'Saraswoti', 0, 3, '2023-06-17'),
 (74, 'Bacteria', 'Bacteria are microscopic unicellular organisms with a wide range of shapes, abundant in air, water and soil, a few of which are beneficial while some are pathogenic and are the cause of many diseases. ', 'Nepali Kan', 1, 2, '2023-06-17'),
 (75, 'Bartholin\'s glands', 'Bartholin\'s glands are a pair of pea sized glands located slightly below and on either side of the vaginal opening. They secrete a fluid during sexual arousal to lubricate vaginal region. Infection of the gland is called Bartholinitis.', 'Saraswoti', 0, 3, '2023-06-17'),
-(76, 'Basal ganglia', 'Basal ganglia is a region located at the base of the brain consisting of three groups of nuclei - the caudate nucleus, putamen, and the globus pallidus - and plays an important role in coordinating voluntary movement.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(76, 'Basal ganglia', 'Basal ganglia is a region located at the base of the brain consisting of three groups of nuclei - the caudate nucleus, putamen, and the globus pallidus - and plays an important role in coordinating voluntary movement.', 'Nepali Kan', 1, 3, '2023-06-17'),
 (77, 'Basophils', 'Basophils are a type of leukocyte (white blood cells) that are responsible for the allergic and antigen response. The least common form of granulocyte, basophils store and secrete histamine, a chemical causing inflammation.', 'Saraswoti', 0, 3, '2023-06-17'),
 (78, 'Bell\'s palsy ', 'Bell\'s palsy, the most common form of facial palsy, is the paralysis of the facial nerve, the nerve that stimulates the muscles on one side of the face. ', 'Nepali Kan', 1, 2, '2023-06-17'),
 (79, 'Benign prostatic hyperplasia (BPH)', 'Benign prostatic hyperplasia (BPH) is the enlargement of the prostate gland that occurs as a man ages. This triggers physiological changes that lead to urination problems.', 'Saraswoti', 0, 3, '2023-06-17'),
@@ -169,11 +175,11 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`,
 (83, 'Biliary system', 'Biliary system consists of the organs and ducts - gallbladder, bile ducts and associated structures - involved in the production and transportation of bile.', 'Saraswoti', 0, 3, '2023-06-17'),
 (84, 'Bilirubin', 'Bilirubin is a yellowish bile pigment produced by the breakdown of haemoglobin from red blood cells in the spleen. High concentration of bilirubin can lead to jaundice and is responsible for the yellow pallor.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (85, 'Biopsy', 'Biopsy is the diagnostic procedure that involves removal of tissue sample from the living body, using a needle, for microscopic analysis.', 'Saraswoti', 0, 3, '2023-06-17'),
-(86, 'Biotin', 'Biotin is a water-soluble B complex vitamin essential for the formation and metabolism of fats and carbohydrates, which are the main source of energy to the body.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(86, 'Biotin', 'Biotin is a water-soluble B complex vitamin essential for the formation and metabolism of fats and carbohydrates, which are the main source of energy to the body.', 'Nepali Kan', 2, 5, '2023-06-17'),
 (87, 'Bipolar disorder ', 'Bipolar disorder is a mood disorder characterised by episodes of shifts in mood, energy and activity levels, with the patient experiencing periods of deep depression alternating with periods of mania or mixed episodes.', 'Saraswoti', 0, 3, '2023-06-17'),
 (88, 'Bladder stones', 'Bladder or urinary bladder is the hollow, elastic, muscular sac, situated in the pelvic cavity that stores urine. Urine leaves the bladder through urethra. ', 'Nepali Kan', 1, 2, '2023-06-17'),
-(89, 'Bladder', 'Bladder stones are small crystalline masses in the bladder, formed from the minerals, especially calcium, and proteins that naturally occur in urine.', 'Saraswoti', 0, 3, '2023-06-17'),
-(90, 'Blastocyst', 'Blastocyst is a thin walled hollow structure that develops from a fertilised ovum and grows into an embryo.', 'Nepali Kan', 1, 2, '2023-06-17'),
+(89, 'Bladder', 'Bladder stones are small crystalline masses in the bladder, formed from the minerals, especially calcium, and proteins that naturally occur in urine.', 'Saraswoti', 0, 5, '2023-06-17'),
+(90, 'Blastocyst', 'Blastocyst is a thin walled hollow structure that develops from a fertilised ovum and grows into an embryo.', 'Nepali Kan', 1, 3, '2023-06-17'),
 (91, 'Blepharitis', 'Blepharitis is an inflammation of the eyelids along the eyelashes due to an overgrowth of bacteria. It causes burning, redness, irritation, itchy eyelids and scaly skin on the eyelashes.', 'Saraswoti', 0, 3, '2023-06-17'),
 (92, 'Blind spot', 'Blind spot is the small oval-shaped area on the retina where no visual image is transmitted as it is devoid of light receptor cells. The optic nerve also enters the eye through the blind spot.', 'Nepali Kan', 1, 2, '2023-06-17'),
 (93, 'Blisters ', 'Blisters are localised lesions on the skin filled with watery fluid, pus or blood, caused by burns, rubbing or allergic reaction.', 'Saraswoti', 0, 3, '2023-06-17'),
@@ -187,7 +193,7 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`,
 (101, 'Body mass index', 'BMI or Body Mass Index is a screening measurement to identify over-weight problems and is a good indicator of obesity. BMI is calculated by a simple formula using the weight and height of an individual to establish a classification into categories of obese and overweight. BMI ≥30 indicates obesity.', 'Human', 0, 0, '2023-06-24'),
 (102, 'Bolus ', 'Bolus refers to a soft mass of chewed food, mixed with saliva, that moves through the alimentary canal. Bolus also refers to a single, relatively large dose or concentrated mass of a drug that is administered orally or intravenously to increase the systemic levels in the body.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (103, 'Bone Cancer', 'Bone cancer is a malignant growth in the bone. The tumor either originates from the bone itself, which is rare, or is secondary, i.e., occurs as a result of cancer spreading from elsewhere in the body.', 'Human', 0, 0, '2023-06-24'),
-(104, 'Bone Densitometry ', 'Bone densitometry or Dual-energy X-ray Absorptiometry (DXA) is an enhanced form of X-ray technology used for measuring Bone Mineral Density (BMD) in order to evaluate bone loss.', 'Nepali Kan', 1, 2, '2023-06-10'),
+(104, 'Bone Densitometry ', 'Bone densitometry or Dual-energy X-ray Absorptiometry (DXA) is an enhanced form of X-ray technology used for measuring Bone Mineral Density (BMD) in order to evaluate bone loss.', 'Nepali Kan', 2, 6, '2023-06-10'),
 (105, 'Bone marrow', 'Bone marrow is the soft fatty tissue found in the bone cavity. Bone marrow contains immature cells called stem cells that develop into red blood cells, white blood cells and platelets.', 'Human', 0, 0, '2023-06-24'),
 (106, 'Bone mineral density (BMD)', 'Bone mineral density or BMD is a measure of the bone mineral content - the amount of calcium and phosphorous - in the given bone mass. Low BMD is indicative of osteoporosis. Evaluation is done using specialised technique called Dual-energy X-ray Absorptiometry (DXA). ', 'Nepali Kan', 1, 2, '2023-06-10'),
 (107, 'Bone remodelling ', 'Bone remodelling is a continuous process of resorption or removal of old bone cells and  ossification or formation of new bone matrix to ensure mechanical integrity of the bone and calcium homeostasis in the body.', 'Human', 0, 0, '2023-06-24'),
@@ -259,11 +265,11 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`,
 (173, 'Colorectal Cancer', 'Colorectal cancer refers to cancer of the colon and rectum. The malignancy arises in the inner wall of the large intestine and is characterised by blood in stools.', 'Human', 0, 0, '2023-06-24'),
 (174, 'Computed Tomography (CT)', 'Computed tomography is a powerful diagnostic technique that produces 3-Dimensional cross sectional images of internal organs of the body from x-rays.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (175, 'Congenital', 'Congenital pertains to a condition existing at, and usually before, birth. Congenital abnormalities are either inherited or result from environmental influences.', 'Human', 0, 0, '2023-06-24'),
-(176, 'Conjunctivitis', 'Conjunctivitis, commonly known as pink eye, is the inflammation in the conjunctiva, the membrane covering the inner eyelids and white of the eye. The condition is characterised by redness, discomfort and watery discharge from the affected eye.', 'Nepali Kan', 1, 2, '2023-06-10'),
+(176, 'Conjunctivitis', 'Conjunctivitis, commonly known as pink eye, is the inflammation in the conjunctiva, the membrane covering the inner eyelids and white of the eye. The condition is characterised by redness, discomfort and watery discharge from the affected eye.', 'Nepali Kan', 1, 4, '2023-06-10'),
 (177, 'Constipation', 'Constipation is infrequent, irregular or difficult evacuation of the bowels. Persons who have less than three bowel movements per week suffer from constipation. ', 'Human', 0, 0, '2023-06-24'),
 (178, 'Contact dermatitis', 'Contact dermatitis is skin inflammation that occurs due to direct contact with an irritant or allergen.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (179, 'Contagious', 'Contagious is a term used to describe a disease that can spread easily from person to person either by direct or indirect contact, or is communicable.', 'Human', 0, 0, '2023-06-24'),
-(180, 'Cornea', 'Cornea is the transparent tissue over the anterior part of the sclera, forming the front of the eye ball, covering the iris and the pupil. Cornea helps focus light rays on to the retina.', 'Nepali Kan', 1, 2, '2023-06-10'),
+(180, 'Cornea', 'Cornea is the transparent tissue over the anterior part of the sclera, forming the front of the eye ball, covering the iris and the pupil. Cornea helps focus light rays on to the retina.', 'Nepali Kan', 1, 3, '2023-06-10'),
 (181, 'Coronary angiography', 'Coronary angiography is an X-ray procedure to examine the blood vessels or chambers of the heart using a catheter and contrast material.', 'Human', 0, 0, '2023-06-24'),
 (182, 'Coronary arteries', 'Coronary arteries are blood vessels located on the surface of the heart that deliver oxygen-rich blood to the heart muscles. There are two major coronary arteries, the right and the left. The left splits into two arteries called the circumflex artery, supplying the left and posterior sides of the heart, and the left anterior descending artery supplying the front of the heart. The right supplies the posterior side of the heart.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (183, 'Coronary artery bypass grafting (CABG)', 'CABG is a surgical procedure done to bypass a blockage in an artery, using grafts, to restore normal blood flow to the heart.', 'Human', 0, 0, '2023-06-24'),
@@ -340,8 +346,8 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`,
 (253, 'Eustachian tube', 'Eustachian tube or auditory tube or pharyngotympanic tube, is a slender cartilage tube lined with mucus memebrane, which connects the middle ear with the nasopharynx. Its main function is to equalise atmospheric pressure in the middle ear.', 'Human', 0, 0, '2023-06-24'),
 (254, 'Exfoliative dermatitis', 'Exfoliative dermatitis, also known as erythroderma, refers to the abnormal reddening and scaling of the skin surface.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (255, 'Exocrine glands', 'An exocrine gland is a specialised organ that secrets hormones through ducts, onto an external or internal body surface. Most glands in the body are exocrine glands – these include gastrointestinal glands, salivary glands and sweat glands.', 'Human', 0, 0, '2023-06-24'),
-(256, 'Eye angiography', 'Also known as retinal photography or fluorescein angiography, eye angiography is a test to examine the blood flow in the retina using a special dye and a camera.', 'Nepali Kan', 7, 8, '2023-06-10'),
-(257, 'Fallopian tube', 'Fallopian tubes are a pair of hollow organs found in the pelvic cavity of a woman that transport mature eggs from the ovaries to the uterus.', 'Human', 0, 1, '2023-06-24'),
+(256, 'Eye angiography', 'Also known as retinal photography or fluorescein angiography, eye angiography is a test to examine the blood flow in the retina using a special dye and a camera.', 'Nepali Kan', 7, 18, '2023-06-10'),
+(257, 'Fallopian tube', 'Fallopian tubes are a pair of hollow organs found in the pelvic cavity of a woman that transport mature eggs from the ovaries to the uterus.', 'Human', 1, 5, '2023-06-24'),
 (258, 'Fatty Liver', 'Fatty liver is a liver disorder with excessive buildup of lipids in the hepatocytes or liver cells that produce a yellow discolouration. The disease is typically associated with alcohol abuse, diabetes and obesity.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (259, 'Femur', 'Femur or thigh bone is the longest, largest and strongest bone in the human body. It is located in the hind or lower limb, between the pelvis and the knee.', 'Human', 0, 0, '2023-06-24'),
 (260, 'Fertilisation ', 'Fertilisation is a process of reproduction in which an egg and a sperm join together to form a zygote.', 'Nepali Kan', 1, 2, '2023-06-10'),
@@ -519,7 +525,7 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`,
 (431, 'Obsessive Compulsive Disorder (OCD)', 'Obsessive compulsive disorder is an anxiety disorder characterised by recurrent and persistent, unpleasant and unwanted thoughts coupled with repetitive and ritualistic behaviour that the person feels driven to perform as a result of the irrational anxiety.', 'Human', 0, 0, '2023-06-24'),
 (432, 'Obstetrics', 'Obstetrics is the branch of medicine that concerns care of women during pregnancy, childbirth and post delivery.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (433, 'Edema', 'Edema is the swelling that results from excessive accumulation of fluid in cells, tissue spaces or body cavities.', 'Human', 0, 0, '2023-06-24'),
-(434, 'Esophagitis', 'Esophagitis is the inflammation of the mucosal lining of the oesophagus, commonly caused due to gastro-oesophageal reflux.', 'Nepali Kan', 1, 2, '2023-06-10'),
+(434, 'Esophagitis', 'Esophagitis is the inflammation of the mucosal lining of the oesophagus, commonly caused due to gastro-oesophageal reflux.', 'Nepali Kan', 4, 5, '2023-06-10'),
 (435, 'Esophagus', 'Esophagus is the tubular, muscular membranous passage that extends from the pharynx to the stomach for the passage of food.', 'Human', 0, 0, '2023-06-24'),
 (436, 'Estrogen', 'Estrogen is a naturally occurring female sex hormone secreted by the ovaries and responsible for the development of female sexual characteristics.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (437, 'Olfactory nerve', 'Olfactory nerve is the first of the cranial nerves that transmits sense of smell to the brain.', 'Human', 0, 0, '2023-06-24'),
@@ -599,7 +605,7 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`,
 (511, 'Rh factor', 'Rh factor is an antigen present on the surface of red blood cells among most humans. Presence of Rh factor in the blood is classified as Rh positve and the absence as Rh negative, as a suffix to the ABO blood type. These antigens induce strong antigenic response in Rh negative individuals, especially during blood transfusion, resulting in agglutination of blood. An immune system of an Rh negative mother can produce strong antibodies against an Rh positive foetus that can be fatal to the foetus.', 'Saraswoti', 0, 0, '2023-06-24'),
 (512, 'Rheumatism', 'Rheumatism is a term used to describe a group of painful conditions, primarily those affecting the joints, tendons, bones and muscles.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (513, 'Rheumatoid arthritis', 'Rheumatoid arthritis is a chronic autoimmune disease affecting joints, that causes inflammation and deformity in them. The body’s immune system produces auto-antibodies, immunoglobulins that target normal cells in the joints and surrounding tissues and can also affect other organs of the body.', 'Saraswoti', 0, 0, '2023-06-24'),
-(514, 'Rheumatoid spondylitis', 'Rheumatoid spondylitis is the chronic inflammation of joints between the vertebrae or between the spine and pelvis. Also known as ankylosing spondylitis or Marie-Strümpell disease, it is marked by impaired mobility of the spine, pain, stiffness in the hips and lower back. The pain progresses to the upper back, eventually affecting the entire back, resulting in loss of flexibility.', 'Nepali Kan', 1, 2, '2023-06-10'),
+(514, 'Rheumatoid spondylitis', 'Rheumatoid spondylitis is the chronic inflammation of joints between the vertebrae or between the spine and pelvis. Also known as ankylosing spondylitis or Marie-Strümpell disease, it is marked by impaired mobility of the spine, pain, stiffness in the hips and lower back. The pain progresses to the upper back, eventually affecting the entire back, resulting in loss of flexibility.', 'Nepali Kan', 1, 3, '2023-06-10'),
 (515, 'Rhinitis', 'Rhinitis is the inflammation of the mucosal lining of the nasal passages caused by allergens like pollen, dust and dust mites and is characterised by runny nose, itching, sneezing, congestion and swelling of the nasal tissues.', 'Saraswoti', 0, 0, '2023-06-24'),
 (516, 'Ribs', 'Ribs are the 12 pairs of slender, curved bones that extend from the spine to attach with the sternum or breastbone to form the rib cage. The ribs form the skeletal framework of the thorax called the thoracic cage and protect the heart and the lungs.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (517, 'Rickets', 'Rickets is a bone disorder resulting from deficiency of vitamin D that leads to poor absorbtion of calcium from the blood. Often occurring in children, rickets leads to defective bone growth, bowed legs, narrow chest, soft bones and twich muscles.', 'Saraswoti', 0, 0, '2023-06-24'),
@@ -745,7 +751,7 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `creators`, `likes`,
 (656, 'Zonular fibres', 'Zonular fibres are delicate fibres that pass over the ciliary body and attach to the lens. Their main function is to hold the lens in position, in a more disc-like shape and regulate the focusing power of the eye.', 'Nepali Kan', 1, 2, '2023-06-10'),
 (657, 'Zoonosis', 'Zoonosis refers to an infectious disease that can be transmitted from animals to human beings, with the animal being a natural reservoir for the infectious agent. Examples of zoonotic diseases include rabies, anthrax, plague, etc.', 'Human', 0, 0, '2023-06-24'),
 (658, 'Zygon', 'Zygon is a short cross-bar or stem that connects the two branches of a zygal fissure, the fissures on the cerebral cortex.', 'Nepali Kan', 1, 2, '2023-06-10'),
-(659, 'Zygote', 'Zygote is a cell formed by the union of male and female gametes (sperm and the ovum) before it undergoes division. The zygote divides through a process known as mitosis and eventually develops into an embryo.', 'Human', 4, 9, '2023-06-24');
+(659, 'Zygote', 'Zygote is a cell formed by the union of male and female gametes (sperm and the ovum) before it undergoes division. The zygote divides through a process known as mitosis and eventually develops into an embryo.', 'Human', 5, 11, '2023-06-24');
 
 -- --------------------------------------------------------
 
@@ -771,13 +777,19 @@ CREATE TABLE `usertable` (
 --
 
 INSERT INTO `usertable` (`id`, `code`, `status`, `expire`, `name`, `email`, `role`, `password`, `photo`, `date`) VALUES
-(116, 0, 'verified', 1687579491, 'Janak0ff', 'qbuyooasoojse@exelica.com', 'creator', '$2y$10$Rxux76ggm.Ri792D49Vide20IFIKRkzVv6L.kBDIRj4.tjAzXSp7q', 'petoivan_0.png', '2023-06-24 09:48:51'),
-(119, 0, 'verified', 0, 'Janak shrestha', 'janakshresthapro@gmail.com', '', '', 'https://lh3.googleusercontent.com/a/AAcHTtdu7-5waBRWo8aT-YXmCvmfRjh_ALqIBEbMJyKCoA=s96-c', '2023-06-24 10:12:14'),
-(120, 0, 'verified', 1687597670, 'Ganga', 'fbaqkbkpmpkbus@exelica.com', 'creator', '$2y$10$HMCYBI/5GogRpNNuu8kAkeMYihuBW.sSjM/Zn4J7WS87vOrDhg94C', 'Spinal Cord and Spinal Nerves Dissection_quiz.png', '2023-06-24 14:51:50');
+(116, 0, 'verified', 1687579491, 'Sita', 'qbuyooasoojse@exelica.com', 'admin', '$2y$10$Rxux76ggm.Ri792D49Vide20IFIKRkzVv6L.kBDIRj4.tjAzXSp7q', 'IMG_20230625_091016.png', '2023-06-24 09:48:51'),
+(119, 0, 'verified', 0, 'Janak shrestha', 'janakshresthapro@gmail.com', 'admin', '', 'https://lh3.googleusercontent.com/a/AAcHTtdu7-5waBRWo8aT-YXmCvmfRjh_ALqIBEbMJyKCoA=s96-c', '2023-06-24 10:12:14'),
+(120, 0, 'verified', 1687597670, 'Ganga', 'fbaqkbkpmpkbus@exelica.com', 'creator', '$2y$10$HMCYBI/5GogRpNNuu8kAkeMYihuBW.sSjM/Zn4J7WS87vOrDhg94C', 'pp.jpg', '2023-06-24 14:51:50');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`s.n`);
 
 --
 -- Indexes for table `contact`
@@ -800,6 +812,12 @@ ALTER TABLE `usertable`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `s.n` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `contact`
