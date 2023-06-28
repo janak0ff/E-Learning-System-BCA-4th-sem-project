@@ -170,17 +170,14 @@ if ($email != false) {
         <a href="create.php" class="add-btn">Add New Record</a>
         <div class="row-count">
             <?php
+            $name = $_SESSION['name'];
             // Connect to the MySQL database
             $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-
             // Retrieve the total number of rows from the "medical_health" table
-            $query = "SELECT COUNT(*) as total FROM medical_health";
+            $query = "SELECT COUNT(*) as total FROM medical_health  WHERE creators = '$name'";
             $result = mysqli_query($conn, $query);
             $row = mysqli_fetch_assoc($result);
-            echo "<p>Total Rrecords: <b>" . $row["total"] . "</b></p>";
+            echo "<p>Total Contribution: <b style='color:#4942E4;'>" . $row["total"] . "</b> words</p>";
 
             // Close the MySQL connection
             mysqli_close($conn);
@@ -199,7 +196,7 @@ if ($email != false) {
                 <th>ID</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Create by</th>
+                <!-- <th>Create by</th> -->
                 <th>Actions</th>
             </tr>
         </thead>
@@ -207,41 +204,38 @@ if ($email != false) {
             <?php
             // Connect to the MySQL database
             $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
 
-            // Retrieve data from the "medical_health" table
+            // Initialize the $index variable
+            $index = 1;
+
             // Check if the user is logged in and retrieve their username or user ID
             if (isset($_SESSION['name'])) {
                 $name = $_SESSION['name'];
-                // Retrieve data from the "medical_health" table
-                $query = "SELECT * FROM medical_health";
+                // Retrieve data from the "medical_health" table for the current user
+                $query = "SELECT * FROM medical_health WHERE creators = '$name'";
                 $result = mysqli_query($conn, $query);
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        echo "<td>" . $row["id"] . "</td>";
+                        echo "<td>" . $index . "</td>";
                         echo "<td>" . $row["title"] . "</td>";
                         echo "<td>" . $row["description"] . "</td>";
-                        echo "<td>" . $row["creators"] . "</td>";
+                        // echo "<td>" . $row["creators"] . "</td>";
                         echo "<td class='actions'>";
-                        // Check if the user has the permission to edit or delete the record
-                        if ($name == $row["creators"]) {
-                            echo "<form action='update.php' method='get' style='display: inline-block'>";
-                            echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
-                            echo "<button type='submit' class='edit-btn'>Edit</button>";
-                            echo "</form>";
-                            echo "<form action='delete.php' method='post' style='display: inline-block;'>";
-                            echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
-                            // echo "<button type='submit' class='delete-btn'>Delete</button>";
-                            echo "<button type='submit' class='delete-btn' onclick='return confirm(\"Are you sure you want to delete this record?\")'>Delete</button>";
-                            echo "</form>";
-                        } else {
-                            echo 'Only <b style="color:blue;font-size:20px;">' . $row["creators"] . '</b> has permission.';
-                        }
+                        echo "<form action='update.php' method='get' style='display: inline-block'>";
+                        echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                        echo "<button type='submit' class='edit-btn'>Edit</button>";
+                        echo "</form>";
+                        echo "<form action='delete.php' method='post' style='display: inline-block;'>";
+                        echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                        // echo "<button type='submit' class='delete-btn'>Delete</button>";
+                        echo "<button type='submit' class='delete-btn' onclick='return confirm(\"Are you sure you want to delete this record?\")'>Delete</button>";
+                        echo "</form>";
                         echo "</td>";
                         echo "</tr>";
+
+                        // Increment the index after each iteration
+                        $index++;
                     }
                 } else {
                     echo "No records found.";
@@ -252,6 +246,21 @@ if ($email != false) {
 
             // Close the MySQL connection
             mysqli_close($conn);
+
+            // // Check if the user has the permission to edit or delete the record
+            // if ($name == $row["creators"]) {
+            //     echo "<form action='update.php' method='get' style='display: inline-block'>";
+            //     echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+            //     echo "<button type='submit' class='edit-btn'>Edit</button>";
+            //     echo "</form>";
+            //     echo "<form action='delete.php' method='post' style='display: inline-block;'>";
+            //     echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+            //     // echo "<button type='submit' class='delete-btn'>Delete</button>";
+            //     echo "<button type='submit' class='delete-btn' onclick='return confirm(\"Are you sure you want to delete this record?\")'>Delete</button>";
+            //     echo "</form>";
+            // } else {
+            //     echo 'Only <b style="color:blue;font-size:20px;">' . $row["creators"] . '</b> has permission.';
+            // }
             ?>
         </tbody>
     </table>

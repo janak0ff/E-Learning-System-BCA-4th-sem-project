@@ -22,7 +22,7 @@ function send_mail($recipient, $subject, $message)
 
   $mail->IsHTML(true);
   $mail->AddAddress($recipient, "user");
-  $mail->SetFrom("medicalhealth@gmail.com", "Medical & Health");
+  $mail->SetFrom("medicalhealth@gmail.com", "Janak");
   // $mail->AddReplyTo("reply-to-email", "reply-to-name");
   // $mail->AddCC("cc-recipient-email", "cc-recipient-name");
   $mail->Subject = $subject;

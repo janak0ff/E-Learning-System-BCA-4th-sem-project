@@ -119,8 +119,8 @@ if ($email != false) {
 	<!-- Header -->
 	<header id="main-header">
 		<nav class="navbar">
-			<a style="width: 14em;font-size: 1.4em;padding:12px 0 0 4em;" href="./index.php">
-				<img src="./images/logo.webp" loading="lazy" alt="Human Anatomy" />
+			<a style="    font-size: 3em;font-weight: 900;color: #b5b3b3;padding: 0 0 0 3em;" href="./index.php">
+			Janak's Project
 			</a>
 
 			<ul>
