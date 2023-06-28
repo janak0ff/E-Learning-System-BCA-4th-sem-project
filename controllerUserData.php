@@ -220,7 +220,7 @@ if (isset($_POST['signup'])) {
             $errors['db-error'] = "Failed while inserting data into database!";
         }
     }
-    
+
     // Display error messages
     // if (!empty($errors)) {
     //     $error_message = '';
@@ -299,52 +299,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['otp1']) && isset($_POS
 
 
 //if user clicks login button
-if (isset($_POST['login'])) {
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-    $password = mysqli_real_escape_string($con, $_POST['password']);
-
-    // Check if the user has checked the "Remember Me" checkbox
-    $remember_me = isset($_POST['remember']) ? $_POST['remember'] : '';
-
-    $check_email = "SELECT * FROM usertable WHERE email = '$email'";
-    $res = mysqli_query($con, $check_email);
-    if (mysqli_num_rows($res) > 0) {
-        $fetch = mysqli_fetch_assoc($res);
-        $fetch_pass = $fetch['password'];
-        if (password_verify($password, $fetch_pass)) {
-            $_SESSION['email'] = $email;
-            $status = $fetch['status'];
-            if ($status == 'verified') {
-                $_SESSION['name'] = $fetch['name'];
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
-
-                // Check if the user has checked the "Remember Me" checkbox
-                $remember_me = isset($_POST['remember']) ? $_POST['remember'] : '';
-
-                if ($remember_me == 'on') {
-                    // If "Remember Me" checkbox is checked, set cookies for email and password
-                    setcookie('email', $email, time() + (30 * 24 * 60 * 60), "/");
-                    setcookie('password', $password, time() + (30 * 24 * 60 * 60), "/");
-                } else {
-                    // If "Remember Me" checkbox is not checked, remove cookies for email and password
-                    setcookie('email', '', time() - 3600, "/");
-                    setcookie('password', '', time() - 3600, "/");
-                }
-
-                header('location: main/index.php');
-            } else {
-                $info = "It's look like you haven't still verify your email - $email";
-                $_SESSION['info'] = $info;
-                header('location: user-otp.php');
-            }
-        } else {
-            $errors['email'] = "Incorrect email or password!";
-        }
-    } else {
-        $errors['email'] = "It's look like you're not yet a member! Click on the bottom link to signup.";
-    }
-}
 // if (isset($_POST['login'])) {
 //     $email = mysqli_real_escape_string($con, $_POST['email']);
 //     $password = mysqli_real_escape_string($con, $_POST['password']);
@@ -352,51 +306,99 @@ if (isset($_POST['login'])) {
 //     // Check if the user has checked the "Remember Me" checkbox
 //     $remember_me = isset($_POST['remember']) ? $_POST['remember'] : '';
 
-//     if ($email == 'admin@admin.com' && $password == 'health') {
-//         // If the user is the admin, set the session variables and redirect to index.php
-//         $_SESSION['email'] = $email;
-//         $_SESSION['password'] = $password;
-//         header('location: main/admin/admin.php');
-//     } else {
-//         $check_email = "SELECT * FROM usertable WHERE email = '$email'";
-//         $res = mysqli_query($con, $check_email);
-//         if (mysqli_num_rows($res) > 0) {
-//             $fetch = mysqli_fetch_assoc($res);
-//             $fetch_pass = $fetch['password'];
-//             if (password_verify($password, $fetch_pass)) {
+//     $check_email = "SELECT * FROM usertable WHERE email = '$email'";
+//     $res = mysqli_query($con, $check_email);
+//     if (mysqli_num_rows($res) > 0) {
+//         $fetch = mysqli_fetch_assoc($res);
+//         $fetch_pass = $fetch['password'];
+//         if (password_verify($password, $fetch_pass)) {
+//             $_SESSION['email'] = $email;
+//             $status = $fetch['status'];
+//             if ($status == 'verified') {
+//                 $_SESSION['name'] = $fetch['name'];
 //                 $_SESSION['email'] = $email;
-//                 $status = $fetch['status'];
-//                 if ($status == 'verified') {
-//                     $_SESSION['email'] = $email;
-//                     $_SESSION['password'] = $password;
+//                 $_SESSION['password'] = $password;
 
-//                     // Check if the user has checked the "Remember Me" checkbox
-//                     $remember_me = isset($_POST['remember']) ? $_POST['remember'] : '';
+//                 // Check if the user has checked the "Remember Me" checkbox
+//                 $remember_me = isset($_POST['remember']) ? $_POST['remember'] : '';
 
-//                     if ($remember_me == 'on') {
-//                         // If "Remember Me" checkbox is checked, set cookies for email and password
-//                         setcookie('email', $email, time() + (30 * 24 * 60 * 60), "/");
-//                         setcookie('password', $password, time() + (30 * 24 * 60 * 60), "/");
-//                     } else {
-//                         // If "Remember Me" checkbox is not checked, remove cookies for email and password
-//                         setcookie('email', '', time() - 3600, "/");
-//                         setcookie('password', '', time() - 3600, "/");
-//                     }
-
-//                     header('location: main/index.php');
+//                 if ($remember_me == 'on') {
+//                     // If "Remember Me" checkbox is checked, set cookies for email and password
+//                     setcookie('email', $email, time() + (30 * 24 * 60 * 60), "/");
+//                     setcookie('password', $password, time() + (30 * 24 * 60 * 60), "/");
 //                 } else {
-//                     $info = "It's look like you haven't still verify your email - $email";
-//                     $_SESSION['info'] = $info;
-//                     header('location: user-otp.php');
+//                     // If "Remember Me" checkbox is not checked, remove cookies for email and password
+//                     setcookie('email', '', time() - 3600, "/");
+//                     setcookie('password', '', time() - 3600, "/");
 //                 }
+
+//                 header('location: main/index.php');
 //             } else {
-//                 $errors['email'] = "Incorrect email or password!";
+//                 $info = "It's look like you haven't still verify your email - $email";
+//                 $_SESSION['info'] = $info;
+//                 header('location: user-otp.php');
 //             }
 //         } else {
-//             $errors['email'] = "It's look like you're not yet a member! Click on the bottom link to signup.";
+//             $errors['email'] = "Incorrect email or password!";
 //         }
+//     } else {
+//         $errors['email'] = "It's look like you're not yet a member! Click on the bottom link to signup.";
 //     }
 // }
+
+if (isset($_POST['login'])) {
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
+
+    // Check if the user has checked the "Remember Me" checkbox
+    $remember_me = isset($_POST['remember']) ? $_POST['remember'] : '';
+
+    if ($email == 'admin@admin.com' && $password == 'janak') {
+        // If the user is the admin, set the session variables and redirect to index.php
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
+        header('location: main/index.php');
+    } else {
+        $check_email = "SELECT * FROM usertable WHERE email = '$email'";
+        $res = mysqli_query($con, $check_email);
+        if (mysqli_num_rows($res) > 0) {
+            $fetch = mysqli_fetch_assoc($res);
+            $fetch_pass = $fetch['password'];
+            if (password_verify($password, $fetch_pass)) {
+                $_SESSION['email'] = $email;
+                $status = $fetch['status'];
+                if ($status == 'verified') {
+                    $_SESSION['name'] = $fetch['name'];
+                    $_SESSION['email'] = $email;
+                    $_SESSION['password'] = $password;
+
+                    // Check if the user has checked the "Remember Me" checkbox
+                    $remember_me = isset($_POST['remember']) ? $_POST['remember'] : '';
+
+                    if ($remember_me == 'on') {
+                        // If "Remember Me" checkbox is checked, set cookies for email and password
+                        setcookie('email', $email, time() + (30 * 24 * 60 * 60), "/");
+                        setcookie('password', $password, time() + (30 * 24 * 60 * 60), "/");
+                    } else {
+                        // If "Remember Me" checkbox is not checked, remove cookies for email and password
+                        setcookie('email', '', time() - 3600, "/");
+                        setcookie('password', '', time() - 3600, "/");
+                    }
+
+                    header('location: main/index.php');
+                } else {
+                    $info = "It's look like you haven't still verify your email - $email";
+                    $_SESSION['info'] = $info;
+                    header('location: user-otp.php');
+                }
+            } else {
+                $errors['email'] = "Incorrect email or password!";
+            }
+        } else {
+            $errors['email'] = "It's look like you're not yet a member! Click on the bottom link to signup.";
+        }
+    }
+}
 
 
 
@@ -422,7 +424,7 @@ if (isset($_POST['check-email'])) {
             $message = 'Dear ' . "<b>" . $name . "</b>" . ',<br><br>' . 'Your OTP code is: ' . "<b>" . $codeL . "</b>" . '.<br><br>OR<br><br>Please confirm your registration by clicking on the following link:<b><a href="http://localhost/medical%20health/new-passwordLink.php?email=' . $email . '&code=' . $codeL . '">click here</a></b><br><br><b>You have only 60 seconds to use the OTP and verification link.</b>';
             if (send_mail($recipient, $subject, $message)) {
                 $info = "We've sent a password reset otp to your email - $email";
-                //  $_SESSION['info'] = $info;
+                $_SESSION['info'] = $info;
                 $_SESSION['email'] = $email;
                 header('location: reset-code.php');
                 exit();

@@ -14,7 +14,7 @@ if (isset($_POST["title"]) && isset($_POST["description"])) {
     $creators = $fetch_info['name'];
 
     // Insert record into database
-    $sql = "INSERT INTO medical_health (title, description, creators) VALUES ('$title', '$description', '$creators')";
+    $sql = "INSERT INTO medical_health (title, description, creators, email) VALUES ('$title', '$description', '$creators', '$email')";
 
     mysqli_query($con, $sql);
 

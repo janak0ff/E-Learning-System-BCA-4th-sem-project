@@ -33,6 +33,10 @@ if ($email != false) {
 } else {
     header('Location: ../../login-user.php');
 }
+
+if ($fetch_info['role'] != 'admin') {
+    header('Location: ../../login-user.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -168,9 +172,6 @@ if ($email != false) {
             <?php
             // Connect to the MySQL database
             $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
 
             // Retrieve the total number of rows from the "usertable" table
             $query = "SELECT COUNT(*) as total FROM usertable";
@@ -203,9 +204,6 @@ if ($email != false) {
             <?php
             // Connect to the MySQL database
             $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
 
             // Retrieve data from the "usertable" table
             // $query = "SELECT * FROM usertable";
@@ -220,7 +218,7 @@ if ($email != false) {
             //         echo "<td class='actions'>";
             //         echo "<form action='deleteMember.php' method='post' style='display: inline-block;'>";
             //         echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
-
+            
             //         echo "<button type='submit' class='delete-btn' onclick='return confirm(\"Are you sure you want to delete this user?\")'>Delete</button>";
             //         echo "</form>";
             //         echo "</td>";
@@ -291,9 +289,7 @@ if ($email != false) {
             <?php
             // Connect to the MySQL database
             $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
+
 
             // Retrieve the total number of rows from the "medical_health" table
             $query = "SELECT COUNT(*) as total FROM medical_health";
@@ -326,9 +322,7 @@ if ($email != false) {
             <?php
             // Connect to the MySQL database
             $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
+
 
             // Retrieve data from the "medical_health" table
             $query = "SELECT * FROM medical_health";

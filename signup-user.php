@@ -72,14 +72,12 @@
 
                         <input type="radio" name="role" value="creator">
                         <label style="margin-right:5px">Creator</label>
-
-                        <input type="radio" name="role" value="admin">
-                        <label style="margin-right:5px">Admin</label>
                     </div>
 
                     <div class="field input-field" style="display:flex;">
                         <label style="margin-right:5px">Profile pic:
-                            <input style="width: 65%;" type="file" name="photo" accept="photo/jpg, photo/jpeg, photo/png">
+                            <input style="width: 65%;" type="file" name="photo"
+                                accept="photo/jpg, photo/jpeg, photo/png">
                         </label>
                     </div>
 

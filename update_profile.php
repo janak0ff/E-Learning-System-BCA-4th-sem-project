@@ -138,33 +138,18 @@ if (isset($_POST['update_password'])) {
                         <label style="margin-right:5px">Role:-</label>
                         <?php
                         $userRole = $fetch_info['role'];
-                        if ($userRole == 'admin') {
-                            echo ' <input type="radio" name="role" value="reader">
-                            <label style="margin-right:5px">Reader</label>
-    
-                            <input type="radio" name="role" value="creator">
-                            <label style="margin-right:5px">Creator</label>
-    
-                            <input type="radio" name="role" value="admin" checked>
-                            <label style="margin-right:5px">Admin</label>';
-                        } elseif ($userRole == 'creator') {
+                        if ($userRole == 'creator') {
                             echo ' <input type="radio" name="role" value="reader">
                             <label style="margin-right:5px">Reader</label>
     
                             <input type="radio" name="role" value="creator" checked>
-                            <label style="margin-right:5px">Creator</label>
-    
-                            <input type="radio" name="role" value="admin" >
-                            <label style="margin-right:5px">Admin</label>';
+                            <label style="margin-right:5px">Creator</label>';
                         } else {
                             echo ' <input type="radio" name="role" value="reader" checked>
                             <label style="margin-right:5px">Reader</label>
     
                             <input type="radio" name="role" value="creator">
-                            <label style="margin-right:5px">Creator</label>
-    
-                            <input type="radio" name="role" value="admin" >
-                            <label style="margin-right:5px">Admin</label>';
+                            <label style="margin-right:5px">Creator</label>';
                         }
                         ?>
                     </div>
@@ -189,8 +174,10 @@ if (isset($_POST['update_password'])) {
                 </div>
             </div>
             <div style="margin: 10px auto;">
-                <a style="padding: 10px;margin: 10px;background: #d13232;color: white;border-radius: 8px;" href="#" onclick="confirmDelete()">Permanently Delete Account</a>
-                <a style="padding: 10px;margin: 10px;background: #3298d1;color: white;border-radius: 8px;" href="main/index.php">Go Home</a>
+                <a style="padding: 10px;margin: 10px;background: #d13232;color: white;border-radius: 8px;" href="#"
+                    onclick="confirmDelete()">Permanently Delete Account</a>
+                <a style="padding: 10px;margin: 10px;background: #3298d1;color: white;border-radius: 8px;"
+                    href="main/index.php">Go Home</a>
             </div>
         </form>
 

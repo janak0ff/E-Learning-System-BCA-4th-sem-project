@@ -119,8 +119,8 @@ if ($email != false) {
 	<!-- Header -->
 	<header id="main-header">
 		<nav class="navbar">
-			<a style="    font-size: 3em;font-weight: 900;color: #b5b3b3;padding: 0 0 0 3em;" href="./index.php">
-			Janak's Project
+			<a style="font-size: 3em;font-weight: 900;color: #b5b3b3;padding: 0 0 0 3em;" href="./index.php">
+				Medical Dictionary
 			</a>
 
 			<ul>
