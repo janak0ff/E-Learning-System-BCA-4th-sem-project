@@ -262,15 +262,16 @@ if ($email != false) {
 				$html .= '</h1>';
 
 				// Display the form to add a new comment
-				$html .= '<hr><center><form method="post" action="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . $current_page . '">';
+				// $html .= '<hr><center><form method="post" action="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . $current_page . '">';
+				$html .= '<hr><center><div class="postComments">';
 				$html .= '<input name="titleid" hidden value="' . $row["id"] . '"/>';
 				$html .= '<input type="text" name="namec" hidden value="' . $fetch_info['name'] . '"/>';
 				$html .= '<input type="text" name="titlec" hidden value="' . $row['title'] . '"/>';
 				$html .= '<textarea rows="10" style="width: 50%;" type="text" name="descriptionc" placeholder="Add your comment..." required></textarea>';
-				$html .= '<button style="width: 89px !important;padding: 10px;color: white;border-radius: 8px;margin-bottom: 10px;background: blue !important;text-align: center;" type="submit">Submit</button>';
-				$html .= '</form></center>';
+				$html .= '<button class="submitcommennts" style="width: 89px !important;padding: 10px;color: white;border-radius: 8px;margin-bottom: 10px;background: blue !important;text-align: center;" type="submit">Submit</button>';
+				$html .= '</div></center>';
 
-				
+
 				$html .= '</div>';
 				$html .= '</div>';
 
@@ -283,51 +284,72 @@ if ($email != false) {
 			echo '</div>';
 
 			// Build the pagination links
-$sql = "SELECT COUNT(*) AS count FROM medical_health";
-$result = mysqli_query($con, $sql);
-$row = mysqli_fetch_assoc($result);
-$total_records = $row["count"];
-$total_pages = ceil($total_records / $records_per_page);
+			$sql = "SELECT COUNT(*) AS count FROM medical_health";
+			$result = mysqli_query($con, $sql);
+			$row = mysqli_fetch_assoc($result);
+			$total_records = $row["count"];
+			$total_pages = ceil($total_records / $records_per_page);
 
-echo '<div class="pagination">';
-if ($current_page > 1) {
-	echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . ($current_page - 1) . '">&laquo; Prev</a>';
-}
-
-for ($i = 1; $i <= $total_pages; $i++) {
-	if ($i == $current_page) {
-		echo '<span class="current">' . $i . '</span>';
-	} else {
-		echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . $i . '" class="pagination-link">' . $i . '</a>';
-	}
-}
-
-if ($current_page < $total_pages) {
-	echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . ($current_page + 1) . '">Next &raquo;</a>';
-}
-
-echo '</div>';
-
-			// Process the form data when submitted
-			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				// Sanitize the input data
-				$id = $_POST["titleid"];
-				$descriptionc = $_POST["descriptionc"];
-				$namec = $_POST["namec"];
-				$titlec = $_POST["titlec"];
-
-				// Insert the new comment into the database 
-				$sql = "INSERT INTO comments (id, namec, titlec, descriptionc) VALUES ('$id', '$namec', '$titlec', '$descriptionc')";
-				$con->query($sql);
-
-				// Redirect back to the current page
-				header("Location: " . $_SERVER["PHP_SELF"] . "?sort=" . $sort . "&order=" . $order . "&page=" . $current_page);
-				exit();
+			echo '<div class="pagination">';
+			if ($current_page > 1) {
+				echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . ($current_page - 1) . '">&laquo; Prev</a>';
 			}
 
+			for ($i = 1; $i <= $total_pages; $i++) {
+				if ($i == $current_page) {
+					echo '<span class="current">' . $i . '</span>';
+				} else {
+					echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . $i . '" class="pagination-link">' . $i . '</a>';
+				}
+			}
+
+			if ($current_page < $total_pages) {
+				echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . ($current_page + 1) . '">Next &raquo;</a>';
+			}
+
+			echo '</div>';
+
+			// // Process the form data when submitted
+			// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			// 	// Sanitize the input data
+			// 	$id = $_POST["titleid"];
+			// 	$descriptionc = $_POST["descriptionc"];
+			// 	$namec = $_POST["namec"];
+			// 	$titlec = $_POST["titlec"];
+			
+			// 	// Insert the new comment into the database 
+			// 	$sql = "INSERT INTO comments (id, namec, titlec, descriptionc) VALUES ('$id', '$namec', '$titlec', '$descriptionc')";
+			// 	$con->query($sql);
+			
+			// 	// Redirect back to the current page
+			// 	// header("Location: " . $_SERVER["PHP_SELF"] . "?sort=" . $sort . "&order=" . $order . "&page=" . $current_page);
+			// 	exit();
+			// }
+			
 			// Close the database connection
-			mysqli_close($con);
+			// mysqli_close($con);
 			?>
+			<script>
+				document.getElementsByClassName('submitcommennts').addEventListener('click', function () {
+					const xhr = new XMLHttpRequest();
+					xhr.open('POST', 'comments.php');
+					xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+					xhr.onload = function () {
+						if (xhr.status === 200) {
+							// Handle the response data here
+							console.log(xhr.responseText);
+						} else {
+							// Handle any errors here
+							console.error('An error occurred');
+						}
+					};
+					xhr.onerror = function () {
+						// Handle any errors here
+						console.error('An error occurred');
+					};
+					xhr.send(new FormData(document.getElementsByClassName('postComments')));
+				});
+			</script>
 
 
 		</div>
