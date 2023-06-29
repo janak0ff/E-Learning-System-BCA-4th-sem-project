@@ -187,37 +187,46 @@ if ($email != false) {
 
 
 			<?php
-			// Fetch data from MySQL table
+			// Connect to the MySQL database
+			$con = mysqli_connect("localhost", "root", "", "medicalhealth");
+
 			// Sanitize and set the sorting column
 			$sort = isset($_GET['sort']) ? htmlspecialchars($_GET['sort']) : 'title';
 
 			// Sanitize and set the sorting order
 			$order = isset($_GET['order']) && $_GET['order'] == 'desc' ? 'DESC' : 'ASC';
 
+			// Set the number of records to display per page
+			$records_per_page = 100;
+
+			// Get the current page number from the query string
+			$current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+			// Calculate the offset for the SQL query
+			$offset = ($current_page - 1) * $records_per_page;
+
 			// Generate the sorting links/buttons
 			echo '<div style="padding-bottom: 20px; text-align: center;">';
 			echo '<p style="font-size: 20px; border: 2px solid green; display: inline-block; border-radius: 8px; padding: 10px; margin: 0;">';
 			echo 'Sort by:';
-			echo '<a style="padding: 10px;" href="?sort=likes&order=desc">Likes(&uarr;)</a>|';
-			echo '<a style="padding: 10px;" href="?sort=views&order=desc">Views(&uarr;)</a>|';
-			echo '<a style="padding: 10px;" href="?sort=title&order=desc">Name(&uarr;)</a>|';
-			echo '<a style="padding: 10px;" href="?sort=date&order=asc">Date(&darr;)</a>';
-			echo '<a style="padding: 10px;" href="?sort=date&order=desc">Date(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=likes&order=desc&page=' . $current_page . '">Likes(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=views&order=desc&page=' . $current_page . '">Views(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=title&order=desc&page=' . $current_page . '">Name(&uarr;)</a>|';
+			echo '<a style="padding: 10px;" href="?sort=date&order=asc&page=' . $current_page . '">Date(&darr;)</a>';
+			echo '<a style="padding: 10px;" href="?sort=date&order=desc&page=' . $current_page . '">Date(&uarr;)</a>|';
 			echo '</p>';
 			echo '</div>';
 
 			echo '<style>@media (max-width: 768px) { p { font-size: 16px; } a { display: block; padding: 5px; } }</style>';
 
-
-
 			// Build the SQL query using the selected sorting method and order
-			$sql = "SELECT * FROM medical_health ORDER BY $sort $order";
+			$sql = "SELECT * FROM medical_health ORDER BY $sort $order LIMIT $offset, $records_per_page";
 
 			// Execute the SQL query
 			$result = mysqli_query($con, $sql);
 
 			// Initialize the $index variable
-			$index = 1;
+			$index = ($current_page - 1) * $records_per_page + 1;
 
 			// Output HTML elements dynamically based on data
 			echo '<div class="dictionary">';
@@ -252,7 +261,8 @@ if ($email != false) {
 
 				$html .= '</h1>';
 
-				$html .= '<hr><center><form action="comments.php" method="post">';
+				// Display the form to add a new comment
+				$html .= '<hr><center><form method="post" action="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . $current_page . '">';
 				$html .= '<input name="titleid" hidden value="' . $row["id"] . '"/>';
 				$html .= '<input type="text" name="namec" hidden value="' . $fetch_info['name'] . '"/>';
 				$html .= '<input type="text" name="titlec" hidden value="' . $row['title'] . '"/>';
@@ -260,6 +270,7 @@ if ($email != false) {
 				$html .= '<button style="width: 89px !important;padding: 10px;color: white;border-radius: 8px;margin-bottom: 10px;background: blue !important;text-align: center;" type="submit">Submit</button>';
 				$html .= '</form></center>';
 
+				
 				$html .= '</div>';
 				$html .= '</div>';
 
@@ -268,11 +279,57 @@ if ($email != false) {
 				// Increment the index after each iteration
 				$index++;
 			}
+
 			echo '</div>';
 
+			// Build the pagination links
+$sql = "SELECT COUNT(*) AS count FROM medical_health";
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_assoc($result);
+$total_records = $row["count"];
+$total_pages = ceil($total_records / $records_per_page);
 
+echo '<div class="pagination">';
+if ($current_page > 1) {
+	echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . ($current_page - 1) . '">&laquo; Prev</a>';
+}
 
+for ($i = 1; $i <= $total_pages; $i++) {
+	if ($i == $current_page) {
+		echo '<span class="current">' . $i . '</span>';
+	} else {
+		echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . $i . '" class="pagination-link">' . $i . '</a>';
+	}
+}
+
+if ($current_page < $total_pages) {
+	echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . ($current_page + 1) . '">Next &raquo;</a>';
+}
+
+echo '</div>';
+
+			// Process the form data when submitted
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				// Sanitize the input data
+				$id = $_POST["titleid"];
+				$descriptionc = $_POST["descriptionc"];
+				$namec = $_POST["namec"];
+				$titlec = $_POST["titlec"];
+
+				// Insert the new comment into the database 
+				$sql = "INSERT INTO comments (id, namec, titlec, descriptionc) VALUES ('$id', '$namec', '$titlec', '$descriptionc')";
+				$con->query($sql);
+
+				// Redirect back to the current page
+				header("Location: " . $_SERVER["PHP_SELF"] . "?sort=" . $sort . "&order=" . $order . "&page=" . $current_page);
+				exit();
+			}
+
+			// Close the database connection
+			mysqli_close($con);
 			?>
+
+
 		</div>
 	</main>
 	<!-- ------------------- scroll up btn -----------------  -->

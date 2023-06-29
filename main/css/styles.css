@@ -697,3 +697,36 @@ img.dropbtn {
 .show {
   display: block;
 }
+
+
+
+.pagination{
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.pagination-link {
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 0 5px;
+	background-color: #ddd;
+	color: #333;
+	text-decoration: none;
+	border-radius: 5px;
+  font-size: 20px;
+}
+
+.current{
+  background-color: #27408b;
+  color: white;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.pagination-link:hover {
+	background-color: #bd7878;
+	color: #fff;
+}
