@@ -133,7 +133,7 @@ function confirmDelete() {
 }
 
 
-// ajax for views and like functionality 
+// ajax for views, comments and like functionality 
 function incrementViews(id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -159,81 +159,36 @@ function incrementLikes(id) {
     xhttp.send();
 }
 
+function submitComment(id) {
+    // Get the form data
+    var titleid = document.getElementById('titleid-' + id).value;
+    var namec = document.getElementById('namec-' + id).value;
+    var titlec = document.getElementById('titlec-' + id).value;
+    var descriptionc = document.getElementById('descriptionc-' + id).value;
 
-// function addComment(id) {
-//     var commentInput = document.getElementsByName("comment");
-//     var commentText = commentInput.value;
-//     if (commentText == "") {
-//         alert("Please enter a comment.");
-//         return;
-//     }
-//     var xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById("comments-" + postId).innerHTML = this.responseText;
-//             commentInput.value = "";
-//         }
-//     };
-//     xhttp.open("POST", "comments.php", true);
-//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     xhttp.send("postId=" + postId + "&comment=" + commentText);
-// }
+    // Create an XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
 
-// function addComment() {
-//     // Get the form data
-//     var titleid = document.getElementsByName("titleid").value;
-//     var descriptionc = document.getElementsByName("descriptionc").value;
-//     var namec = document.getElementsByName("namec").value;
-//     var titlec = document.getElementsByName("titlec").value;
+    // Configure the request
+    xhr.open('POST', 'comments.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-//     // Create a new XMLHttpRequest object
-//     var xhr = new XMLHttpRequest();
+    // Define the callback function
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            location.reload();
+        }
+    };
 
-//     // Define the callback function
-//     xhr.onreadystatechange = function() {
-//         if (xhr.readyState == 4 && xhr.status == 200) {
-//             // Parse the JSON response
-//             var comment = JSON.parse(xhr.responseText);
+    // Prepare the request data
+    var data = 'titleid=' + encodeURIComponent(titleid) +
+        '&namec=' + encodeURIComponent(namec) +
+        '&titlec=' + encodeURIComponent(titlec) +
+        '&descriptionc=' + encodeURIComponent(descriptionc);
 
-//             // Add the new comment to the page
-//             var commentsDiv = document.getElementById("comments");
-//             var newCommentDiv = document.createElement("div");
-//             newCommentDiv.className = "comment";
-//             newCommentDiv.innerHTML = '<div class="comment-header">' + comment.namec + ' on ' + comment.titlec + '</div>' +
-//                                       '<div class="comment-body">' + comment.descriptionc + '</div>';
-//             commentsDiv.appendChild(newCommentDiv);
-
-//             // Clear the comment form
-//             document.getElementById("comment-form").reset();
-//         }
-//     };
-
-//     // Send the AJAX request
-//     xhr.open("POST", "comments.php", true);
-//     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     xhr.send("titleid=" + titleid + "&descriptionc=" + descriptionc + "&namec=" + namec + "&titlec=" + titlec);
-// }
+    // Send the request
+    xhr.send(data);
+}
 
 
-
-// function addComment(id) {
-//     var form = document.querySelector('#comment-form-' + id);
-//     var namec = form.querySelector('input[name="namec"]').value;
-//     var titlec = form.querySelector('input[name="titlec"]').value;
-//     var descriptionc = form.querySelector('textarea[name="descriptionc"]').value;
-//     var titleid = form.querySelector('input[name="titleid"]').value;
-
-//     var xhr = new XMLHttpRequest();
-//     xhr.onreadystatechange = function () {
-//         if (xhr.readyState == 4 && xhr.status == 200) {
-//             var comment = JSON.parse(xhr.responseText);
-//             var html = '<hr><div><span style="background: #a6a6ad;padding: 2px;font-size:18px;">By: ' + comment.namec + '</span> <p style="font-size:18px;display:inline;"> :- ' + comment.descriptionc + '</p></div>';
-//             var commentsDiv = document.querySelector('#title-' + id + ' .WDescription h1');
-//             commentsDiv.insertAdjacentHTML('beforeend', html);
-//             form.reset();
-//         }
-//     };
-//     xhr.open('POST', 'comments.php', true);
-//     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-//     xhr.send('namec=' + namec + '&titlec=' + titlec + '&descriptionc=' + descriptionc + '&titleid=' + titleid);
-// }
+// end /

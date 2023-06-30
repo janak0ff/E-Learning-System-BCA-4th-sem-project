@@ -154,7 +154,7 @@ body {
   /* margin: 0px 16px; */
 }
 
-.dictionary-item .janaklikes svg{
+.dictionary-item .janaklikes svg {
   right: 25px;
   position: absolute;
 }
@@ -698,35 +698,38 @@ img.dropbtn {
   display: block;
 }
 
-
-
-.pagination{
-  padding: 10px;
+.pagination {
+  margin-top: 10px;
   text-align: center;
-  font-size: 20px;
+  padding: 10px;
+  font-size: 16px;
 }
-
-.pagination-link {
-	display: inline-block;
-	padding: 5px 10px;
-	margin: 0 5px;
-	background-color: #ddd;
-	color: #333;
-	text-decoration: none;
-	border-radius: 5px;
-  font-size: 20px;
+.pagination a,
+.pagination span {
+  display: inline-block;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 5px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
 }
-
-.current{
+.pagination a:hover {
+  background-color: #bd7878;
+  color: #fff;
+}
+.pagination .current {
   background-color: #27408b;
   color: white;
   margin: 0 5px;
   padding: 5px 10px;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 16px;
 }
-
-.pagination-link:hover {
-	background-color: #bd7878;
-	color: #fff;
+.pagination-dots {
+  padding: 5px 10px;
+  margin-right: 5px;
 }
