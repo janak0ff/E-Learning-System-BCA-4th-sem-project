@@ -49,7 +49,7 @@
 
                     <div class="form-link" style="display: flex;">
                         <div>
-                            <input type="checkbox" name="remember" checked>
+                            <input type="checkbox" name="remember">
                             <label for="remember">Remember me</label>
                         </div>
                         <div style="position: absolute;right: 30px;">

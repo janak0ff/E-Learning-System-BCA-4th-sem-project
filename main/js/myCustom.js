@@ -81,6 +81,39 @@ function searchDictionary() {
     });
 }
 
+// function searchDictionary() {
+//     const query = searchBar.value.toLowerCase();
+//     const dictionaryItems = document.querySelectorAll('.dictionary-item');
+
+//     if (query.length > 2) {
+//         // Fetch search results from the database
+//         const xhr = new XMLHttpRequest();
+//         xhr.open('GET', '../search.php?q=' + query);
+//         xhr.onload = function() {
+//             if (xhr.status === 200) {
+//                 const results = JSON.parse(xhr.responseText);
+
+//                 // Display the search results
+//                 dictionaryItems.forEach(item => {
+//                     const id = item.getAttribute('id').substr(6);
+//                     const title = item.querySelector('.title').textContent.toLowerCase();
+
+//                     if (title.includes(query) || results.includes(id)) {
+//                         item.style.display = 'block';
+//                     } else {
+//                         item.style.display = 'none';
+//                     }
+//                 });
+//             }
+//         };
+//         xhr.send();
+//     } else {
+//         // Display all items if the query is too short
+//         dictionaryItems.forEach(item => {
+//             item.style.display = 'block';
+//         });
+//     }
+// }
 
 
 

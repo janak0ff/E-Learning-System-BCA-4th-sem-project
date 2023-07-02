@@ -153,9 +153,18 @@ if ($email != false) {
 						?>
 					</a>
 					<div id="myDropdown" class="dropdown-content">
-						<a href="../update_profile.php">Update Profile</a>
+						<?php if ($userRole == 'admin') {
+							echo null;
+						} else {
+							echo '<a href="../update_profile.php">Update Profile</a>';
+						} ?>
+						<?php if ($userRole == 'admin') {
+							echo null;
+						} else {
+							echo '<a href="#" onclick="confirmDelete()">Delete Account</a>';
+						} ?>
+
 						<a href="../logout-user.php">Logout</a>
-						<a href="#" onclick="confirmDelete()">Delete Account</a>
 						<?php
 						$userRole = $fetch_info['role'];
 						if ($userRole == 'admin') {
@@ -176,7 +185,8 @@ if ($email != false) {
 	<main style="padding-top: 80px;">
 		<center style=" font-family: 'Bruno Ace', cursive;">
 			<h1 style="font-size: 20px; width: 80%; padding: 40px 0px; color: rgb(73 71 71); line-height: 24px;">
-				The Medical & Health Dictionary is a valuable reference for all groups of people, covering all medical &
+				The Medical & Health Dictionary is a valuable reference for all groups of people, covering maximum
+				important medical &
 				health terms.
 			</h1>
 			<h1><b style="color: rgb(73 71 71); text-transform: capitalize; font-size:30px">Dictionary of Medical
@@ -184,7 +194,6 @@ if ($email != false) {
 		</center>
 		<div class="containerfaq">
 			<input type="text" id="search-bar" placeholder="Search here..." />
-
 
 			<?php
 			// Connect to the MySQL database
@@ -197,7 +206,7 @@ if ($email != false) {
 			$order = isset($_GET['order']) && $_GET['order'] == 'desc' ? 'DESC' : 'ASC';
 
 			// Set the number of records to display per page
-			$records_per_page = 50;
+			$records_per_page = 100;
 
 			// Get the current page number from the query string
 			$current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -287,34 +296,18 @@ if ($email != false) {
 			$row = mysqli_fetch_assoc($result);
 			$total_records = $row["count"];
 			$total_pages = ceil($total_records / $records_per_page);
-			
-			// echo '<div class="pagination">';
-			// if ($current_page > 1) {
-			// 	echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . ($current_page - 1) . '">&laquo; Prev</a>';
-			// }
-			
-			// for ($i = 1; $i <= $total_pages; $i++) {
-			// 	if ($i == $current_page) {
-			// 		echo '<span class="current">' . $i . '</span>';
-			// 	} else {
-			// 		echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . $i . '" class="pagination-link">' . $i . '</a>';
-			// 	}
-			// }
-			
-			// if ($current_page < $total_pages) {
-			// 	echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . ($current_page + 1) . '">Next &raquo;</a>';
-			// }
+
 			echo '<div class="pagination">';
 			if ($current_page > 1) {
 				echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=' . ($current_page - 1) . '">&laquo; Prev</a>';
 			}
 
 			$start_page = max(1, $current_page - 2);
-			$end_page = min($start_page + 4, $total_pages);
+			$end_page = min($start_page + 5, $total_pages);
 
 			if ($start_page > 1) {
 				echo '<a href="' . $_SERVER["PHP_SELF"] . '?sort=' . $sort . '&order=' . $order . '&page=1" class="pagination-link">1</a>';
-				if ($start_page > 2) {
+				if ($start_page > 3) {
 					echo '<span class="pagination-dots">&hellip;</span>';
 				}
 			}

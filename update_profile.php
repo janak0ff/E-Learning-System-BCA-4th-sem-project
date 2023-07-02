@@ -62,25 +62,31 @@ if (isset($_POST['update_password'])) {
 
     if (!empty($new_pass) && !empty($confirm_pass)) {
         if ($new_pass == $confirm_pass) {
-            // Escape the password strings to prevent SQL injection
-            $new_pass = mysqli_real_escape_string($con, $new_pass);
-            $confirm_pass = mysqli_real_escape_string($con, $confirm_pass);
 
-            // Hash the password
-            $hashed_pass = password_hash($confirm_pass, PASSWORD_BCRYPT);
+            // Check password strength
+            if (strlen($confirm_pass) < 6 || !preg_match("#[0-9]+#", $confirm_pass) || !preg_match("#[a-z]+#", $confirm_pass) || !preg_match("#[A-Z]+#", $confirm_pass) || !preg_match("#\W+#", $confirm_pass)) {
+                $message[] = "Password must be at least 6 characters and contain at least one number, one lowercase letter, one uppercase letter, and one special character.";
+            } else {
 
-            // Update the user's password in the database
-            $query = "UPDATE `usertable` SET password = '$hashed_pass' WHERE id = '$id'";
-            $result = mysqli_query($con, $query);
+                // Escape the password strings to prevent SQL injection
+                $new_pass = mysqli_real_escape_string($con, $new_pass);
+                $confirm_pass = mysqli_real_escape_string($con, $confirm_pass);
 
-            if (!$result) {
-                die('Query failed: ' . mysqli_error($con));
+                // Hash the password
+                $hashed_pass = password_hash($confirm_pass, PASSWORD_BCRYPT);
+
+                // Update the user's password in the database
+                $query = "UPDATE `usertable` SET password = '$hashed_pass' WHERE id = '$id'";
+                $result = mysqli_query($con, $query);
+                if (!$result) {
+                    die('Query failed: ' . mysqli_error($con));
+                }
+
+                // Store updated password in cookies
+                setcookie("password", $confirm_pass, time() + (86400 * 30), "/"); // cookie expires after 30 days
+
+                $message[] = 'Password updated successfully!';
             }
-
-            // Store updated password in cookies
-            setcookie("password", $hashed_pass, time() + (86400 * 30), "/"); // cookie expires after 30 days
-
-            $message[] = 'Password updated successfully!';
         } else {
             $message[] = 'Confirm password not matched!';
         }
