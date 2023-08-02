@@ -27,6 +27,7 @@
                 padding: 20px;
                 border: 1px solid #ccc;
                 border-radius: 5px;
+                width: 75%;
                 background-color: #f8f8f8;
                 box-shadow: 0px 0px 10px #ccc;
             }
@@ -40,7 +41,6 @@
                 border: 1px solid #ccc;
                 font-size: 16px;
                 width: 100%;
-                max-width: 500px;
                 box-sizing: border-box;
             }
 

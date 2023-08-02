@@ -9,7 +9,7 @@ if (!$conn) {
 
 // Delete the user record with the specified ID
 $id = $_POST["id"]; // Retrieve the id parameter from HTTP POST
-$query = "DELETE FROM medical_health WHERE id = '$id'";
+$query = "DELETE FROM words_collection WHERE id = '$id'";
 mysqli_query($conn, $query);
 
 // Close the MySQL connection

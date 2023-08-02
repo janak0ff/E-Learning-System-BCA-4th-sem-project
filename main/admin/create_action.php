@@ -12,9 +12,11 @@ if (isset($_POST["title"]) && isset($_POST["description"])) {
     $title = $_POST["title"];
     $description = $_POST["description"];
     $creators = $fetch_info['name'];
+    $email = $_SESSION['email'];
+    $date = date('Y-m-d');
 
     // Insert record into database
-    $sql = "INSERT INTO medical_health (title, description, creators, email) VALUES ('$title', '$description', '$creators', '$email')";
+    $sql = "INSERT INTO words_collection (title, description, creators, email, date) VALUES ('$title', '$description', '$creators', '$email', '$date')";
 
     mysqli_query($con, $sql);
 

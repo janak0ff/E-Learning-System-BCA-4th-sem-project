@@ -164,23 +164,23 @@ if ($email != false) {
 			echo '</center>';
 
 			// Set up the SQL query with LEFT OUTER JOIN and RIGHT OUTER JOIN
-			$sql = "SELECT * FROM medical_health 
-        LEFT OUTER JOIN comments ON medical_health.id = comments.id 
+			$sql = "SELECT * FROM words_collection 
+        LEFT OUTER JOIN comments ON words_collection.id = comments.id 
         UNION 
-        SELECT * FROM medical_health 
-        RIGHT OUTER JOIN comments ON medical_health.id = comments.id 
-        WHERE medical_health.id IS NULL 
+        SELECT * FROM words_collection 
+        RIGHT OUTER JOIN comments ON words_collection.id = comments.id 
+        WHERE words_collection.id IS NULL 
         ORDER BY $sort $order";
 
 			// Execute the SQL query
 			$result = $con->query($sql);
 
 			// Build the SQL query using the selected sorting method and order
-			// $sql = "SELECT * FROM medical_health ORDER BY $sort $order";
+			// $sql = "SELECT * FROM words_collection ORDER BY $sort $order";
 			
-			// $sql = "SELECT * FROM medical_health ORDER BY title ASC";
-			// $sql = "SELECT * FROM medical_health ORDER BY title DESC";
-			// $sql = "SELECT * FROM medical_health ORDER BY date DESC";
+			// $sql = "SELECT * FROM words_collection ORDER BY title ASC";
+			// $sql = "SELECT * FROM words_collection ORDER BY title DESC";
+			// $sql = "SELECT * FROM words_collection ORDER BY date DESC";
 			
 
 			// Output HTML elements dynamically based on data
@@ -256,7 +256,7 @@ if ($email != false) {
 			echo '<style>@media (max-width: 768px) { p { font-size: 16px; } a { display: block; padding: 5px; } }</style>';
 
 			// Build the SQL query using the selected sorting method and order
-			$sql = "SELECT * FROM medical_health ORDER BY $sort $order";
+			$sql = "SELECT * FROM words_collection ORDER BY $sort $order";
 			$sqlc = "SELECT * FROM comments";
 
 			// Execute the SQL query
@@ -334,7 +334,7 @@ if ($email != false) {
 			echo '<style>@media (max-width: 768px) { p { font-size: 16px; } a { display: block; padding: 5px; } }</style>';
 
 			// Build the SQL query using the selected sorting method and order
-			$sql = "SELECT * FROM medical_health ORDER BY $sort $order";
+			$sql = "SELECT * FROM words_collection ORDER BY $sort $order";
 			$sqlc = "SELECT * FROM comments";
 
 			// Execute the SQL query
@@ -426,7 +426,7 @@ if ($email != false) {
 
 
 			// Build the SQL query using the selected sorting method and order
-			$sql = "SELECT * FROM medical_health ORDER BY $sort $order";
+			$sql = "SELECT * FROM words_collection ORDER BY $sort $order";
 
 			// Execute the SQL query
 			$result = mysqli_query($con, $sql);

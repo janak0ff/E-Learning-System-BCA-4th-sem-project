@@ -173,8 +173,8 @@ if ($email != false) {
             $name = $_SESSION['name'];
             // Connect to the MySQL database
             $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
-            // Retrieve the total number of rows from the "medical_health" table
-            $query = "SELECT COUNT(*) as total FROM medical_health  WHERE creators = '$name'";
+            // Retrieve the total number of rows from the "words_collection" table
+            $query = "SELECT COUNT(*) as total FROM words_collection  WHERE creators = '$name'";
             $result = mysqli_query($conn, $query);
             $row = mysqli_fetch_assoc($result);
             echo "Dear <b style='color:#4942E4;'>" . $name . "</b>, <span>your total Contribution: <b style='color:#4942E4;'>" . $row["total"] . "</b> words</span>";
@@ -211,8 +211,9 @@ if ($email != false) {
             // Check if the user is logged in and retrieve their username or user ID
             if (isset($_SESSION['email'])) {
                 $email = $_SESSION['email'];
-                // Retrieve data from the "medical_health" table for the current user
-                $query = "SELECT * FROM medical_health WHERE email = '$email'";
+                // Retrieve data from the "words_collection" table for the current user
+                // $query = "SELECT * FROM words_collection WHERE email = '$email'";
+                $query = "SELECT * FROM words_collection WHERE creators = '$name'";
                 $result = mysqli_query($conn, $query);
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {

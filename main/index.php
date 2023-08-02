@@ -229,7 +229,7 @@ if ($email != false) {
 			echo '<style>@media (max-width: 768px) { p { font-size: 16px; } a { display: block; padding: 5px; } }</style>';
 
 			// Build the SQL query using the selected sorting method and order
-			$sql = "SELECT * FROM medical_health ORDER BY $sort $order LIMIT $offset, $records_per_page";
+			$sql = "SELECT * FROM words_collection ORDER BY $sort $order LIMIT $offset, $records_per_page";
 
 			// Execute the SQL query
 			$result = mysqli_query($con, $sql);
@@ -291,7 +291,7 @@ if ($email != false) {
 			echo '</div>';
 
 			// Build the pagination links
-			$sql = "SELECT COUNT(*) AS count FROM medical_health";
+			$sql = "SELECT COUNT(*) AS count FROM words_collection";
 			$result = mysqli_query($con, $sql);
 			$row = mysqli_fetch_assoc($result);
 			$total_records = $row["count"];

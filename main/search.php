@@ -6,7 +6,7 @@ $con = mysqli_connect("localhost", "root", "", "medicalhealth");
 $q = isset($_POST['q']) ? mysqli_real_escape_string($con, $_POST['q']) : '';
 
 // Build the SQL query to search for pages with the given title
-$sql = "SELECT id FROM medical_health WHERE title LIKE '%$q%'";
+$sql = "SELECT id FROM words_collection WHERE title LIKE '%$q%'";
 
 // Execute the SQL query
 $result = mysqli_query($con, $sql);

@@ -11,7 +11,7 @@ if (!$conn) {
 $id = $_POST["id"];
 $title = $_POST["title"];
 $description = $_POST["description"];
-$query = "UPDATE medical_health SET title = '$title', description = '$description' WHERE id = '$id'";
+$query = "UPDATE words_collection SET title = '$title', description = '$description' WHERE id = '$id'";
 mysqli_query($conn, $query);
 
 // Close the MySQL connection

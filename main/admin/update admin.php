@@ -28,6 +28,7 @@
             background-color: #f0f0f0;
             border-radius: 10px;
             padding: 20px;
+            width: 75%;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
@@ -70,7 +71,7 @@
 
     // Retrieve the user record with the specified ID
     $id = mysqli_real_escape_string($conn, $_GET["id"]);
-    $query = "SELECT * FROM medical_health WHERE id = '$id'";
+    $query = "SELECT * FROM words_collection WHERE id = '$id'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
 

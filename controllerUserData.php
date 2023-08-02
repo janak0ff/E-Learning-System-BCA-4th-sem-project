@@ -356,6 +356,7 @@ if (isset($_POST['login'])) {
     if ($email == 'admin@admin.com' && $password == 'janak') {
         // If the user is the admin, set the session variables and redirect to index.php
         $_SESSION['email'] = $email;
+        $_SESSION['name'] = 'admin';
         $_SESSION['password'] = $password;
         header('location: main/index.php');
     } else {

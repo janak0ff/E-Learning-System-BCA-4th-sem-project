@@ -291,8 +291,8 @@ if ($fetch_info['role'] != 'admin') {
             $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
 
 
-            // Retrieve the total number of rows from the "medical_health" table
-            $query = "SELECT COUNT(*) as total FROM medical_health";
+            // Retrieve the total number of rows from the "words_collection" table
+            $query = "SELECT COUNT(*) as total FROM words_collection";
             $result = mysqli_query($conn, $query);
             $row = mysqli_fetch_assoc($result);
             echo "<p>Total Rrecords: <b>" . $row["total"] . "</b></p>";
@@ -324,8 +324,8 @@ if ($fetch_info['role'] != 'admin') {
             $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
 
 
-            // Retrieve data from the "medical_health" table
-            $query = "SELECT * FROM medical_health";
+            // Retrieve data from the "words_collection" table
+            $query = "SELECT * FROM words_collection";
             $result = mysqli_query($conn, $query);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {

@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medical_health`
+-- Table structure for table `words_collection`
 --
 
-CREATE TABLE `medical_health` (
+CREATE TABLE `words_collection` (
   `id` int(11) NOT NULL,
   `title` varchar(55) DEFAULT NULL,
   `description` text DEFAULT NULL,
@@ -37,10 +37,10 @@ CREATE TABLE `medical_health` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `medical_health`
+-- Dumping data for table `words_collection`
 --
 
-INSERT INTO `medical_health` (`id`, `title`, `description`, `video`, `flag`, `alphabet`) VALUES
+INSERT INTO `words_collection` (`id`, `title`, `description`, `video`, `flag`, `alphabet`) VALUES
 (1, 'Abdomen ', 'Abdomen is the area of the body between the thorax and the pelvis that encloses major organs of the digestive system.', 'abdomen.mp4', 'Paid', 'A'),
 (2, 'Ablation', 'Ablation is the surgical removal or excision of a diseased body part or tissue.', 'Ablation.mp4', 'Paid', 'A'),
 (3, 'Abscess', 'Abscess is localised collection of pus, that develops as an immune reaction to infection. The skin surrounding the inflamed area is usually red and painful.', 'Abscess.mp4', 'Paid', 'A'),
@@ -235,7 +235,7 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `video`, `flag`, `al
 (192, 'Dandruff', 'Also called scurf or seborrhea and medically termed as Pityriasis capitis, dandruff is the excessive flaking or shedding of skin cells from the scalp .', 'Dandruff.mp4', 'Paid', 'D'),
 (193, 'Deep brain stimulation', 'Deep brain stimulation is a neurosurgical treatment involving the implantation of a brain pacemaker that sends mild electrical signals to stimulate particular parts of the brain, especially in patients with neurological disorders like Parkinson’s disease or chronic depression.', 'DeepbrainStimulation.mp4', 'Paid', 'D'),
 (194, 'Deep Vein Thrombosis (DVT)', 'Deep vein thrombosis is the formation of blood clot or thrombus in a deep-lying vein, usually in the legs and thigh. A clot that breaks off, called an embolus, can travel to the lungs and cause respiratory failure.', 'DeepVeinThrombosis.mp4', 'Free', 'D');
-INSERT INTO `medical_health` (`id`, `title`, `description`, `video`, `flag`, `alphabet`) VALUES
+INSERT INTO `words_collection` (`id`, `title`, `description`, `video`, `flag`, `alphabet`) VALUES
 (195, 'Defibrillation', 'Defibrillation is a procedure to correct abnormal heart beat. An electric device is used to pass high energy impulse on the chest wall or directly to the heart muscle to restore normal heart beat.  ', 'Defibrillation.mp4', 'Paid', 'D'),
 (196, 'Dementia', 'Dementia is a group of symptoms that suggest severe loss of mental ability to cope with normal day-to-day activities for over six months. This progressive decline of cognitive functions such as reasoning, memory, etc occurs when the neurons in the brain are damaged as a result of ageing, disease or injury to the brain. ', 'Dementia.mp4', 'Paid', 'D'),
 (197, 'Dendritic cells', 'Dendritic cells are immune cells that boost immune responses. Being one among the antigen-presenting cells (APCs), the dendritic cells process and present antigens to other cells of the immune system through the receptors on their surface.', 'Dendritic cells.mp4', 'Paid', 'D'),
@@ -424,7 +424,7 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `video`, `flag`, `al
 (380, 'Lymphatics', 'Lymphatics are channels in the lymphatic system similar to blood vessels that transport lymph or tissue fluid from the body and eventually drain back into the blood stream.', 'Lymphatics.mp4', 'Paid', 'L'),
 (381, 'Lymphocytes', 'Lymphocytes are white blood cells that that help the body fight infection and disease. The two main types of lymphocytes are B cells and T cells. B cells make antibodies, while T cells attack the body cells that are cancerous or infected.', 'Lymphocytes.mp4', 'Paid', 'L'),
 (382, 'Lymphoma', 'Lymphoma is a malignant tumour in the lymph nodes or other lymphatic tissues. Proliferation of the malignant lymphoid cells results in painless enlargement of one or more lymph nodes.', 'Lymphoma.mp4', 'Paid', 'L');
-INSERT INTO `medical_health` (`id`, `title`, `description`, `video`, `flag`, `alphabet`) VALUES
+INSERT INTO `words_collection` (`id`, `title`, `description`, `video`, `flag`, `alphabet`) VALUES
 (383, 'Macrophage', 'Macrophages are phagocytic white blood cells that ingest foreign materials, such as pathogens, in an immune response. They also secrete substances that stimulate other cells of the immune system, like lymphocytes.', 'Macrophage.mp4', 'Paid', 'M'),
 (384, 'Macula', 'Macula is a small, sensitive area in the retina, which provides the most distinct vision in the retina. The abundant cone cells in this region are responsible for central vision. ', 'Macula.mp4', 'Paid', 'M'),
 (385, 'Macular edema', 'Macular oedema is swelling of the macula, a small yellowish area of the retina, that occurs due to leakage of fluid from blood vessels within the macula.', 'Macular oedema.mp4', 'Paid', 'M'),
@@ -615,7 +615,7 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `video`, `flag`, `al
 (570, 'Strep Throat', 'Strep throat is an infection of the throat caused by Group A Streptococcus bacteria. Affecting the mucous lining of pharynx, strep throat can develop into rheumatic fever or other serious conditions if left untreated.', 'StrepThroat.mp4', 'Paid', 'S'),
 (571, 'Streptococci ', 'Streptococci are spherical Gram positive bacteria occurring in pairs or chains including many erythrocytolytic and pathogenic species. Streptococci constitute part of the normal flora of the mouth, skin, intestine and upper respiratory tract. Pathogenic species cause infections like strep throat, erysipelas and scarlet fever.', 'Streptococci.mp4', 'Paid', 'S'),
 (572, 'Stricture', 'Stricture is an abnormal narrowing of passage or duct in the body (Eg: urethra, oesophagus, ureter) due to the inflammation, growth of tumour, scarring or pressure from the surrounding organs. ', 'Stricture.mp4', 'Paid', 'S');
-INSERT INTO `medical_health` (`id`, `title`, `description`, `video`, `flag`, `alphabet`) VALUES
+INSERT INTO `words_collection` (`id`, `title`, `description`, `video`, `flag`, `alphabet`) VALUES
 (573, 'Stroke', 'Stroke is the sudden death of some brain cells that occurs due to lack of oxygen when blood flow is impaired as a result of a blockage or rupture in a blood vessel to the brain.', 'Stroke.mp4', 'Paid', 'S'),
 (574, 'Suprarenal glands', 'Suprarenal glands or adrenal glands are two triangular endocrine glands located one on top of each kidney.', 'Suprarenalglands.mp4', 'Paid', 'S'),
 (575, 'Swine flu', 'Swine flu or H1N1 flu is a respiratory illness caused by the H1N1 flu virus, a strain of the influenza virus that usually affects pigs, but may also affect humans. The symptoms of swine flu are similar to those of the regular human seasonal flu – fever, cough, sore throat, body aches, headache, chills and fatigue.', 'Swine flu.mp4', 'Paid', 'S'),
@@ -709,9 +709,9 @@ INSERT INTO `medical_health` (`id`, `title`, `description`, `video`, `flag`, `al
 --
 
 --
--- Indexes for table `medical_health`
+-- Indexes for table `words_collection`
 --
-ALTER TABLE `medical_health`
+ALTER TABLE `words_collection`
   ADD PRIMARY KEY (`id`),
   ADD KEY `title` (`title`);
 
@@ -720,9 +720,9 @@ ALTER TABLE `medical_health`
 --
 
 --
--- AUTO_INCREMENT for table `medical_health`
+-- AUTO_INCREMENT for table `words_collection`
 --
-ALTER TABLE `medical_health`
+ALTER TABLE `words_collection`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=660;
 COMMIT;
 
