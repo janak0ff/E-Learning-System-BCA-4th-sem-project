@@ -1,6 +1,6 @@
 <?php
 // Connect to the MySQL database
-$con = mysqli_connect("localhost", "root", "", "medicalhealth");
+$con = mysqli_connect("localhost", "root", "", "elearn");
 
 // Sanitize and set the search query
 $q = isset($_POST['q']) ? mysqli_real_escape_string($con, $_POST['q']) : '';

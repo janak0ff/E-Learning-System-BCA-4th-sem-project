@@ -36,7 +36,7 @@ if ($email != false) {
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Home :
+	<title>E-learn :
 		<?php echo $fetch_info['name']; ?>
 	</title>
 	<link rel="shortcut icon" href="./images/favicon.webp" />
@@ -120,7 +120,7 @@ if ($email != false) {
 	<header id="main-header">
 		<nav class="navbar">
 			<a style="font-size: 3em;font-weight: 900;color: #b5b3b3;padding: 0 0 0 3em;" href="./index.php">
-				Medical Dictionary
+				E-Learning
 			</a>
 
 			<ul>
@@ -185,19 +185,19 @@ if ($email != false) {
 	<main style="padding-top: 80px;">
 		<center style=" font-family: 'Bruno Ace', cursive;">
 			<h1 style="font-size: 20px; width: 80%; padding: 40px 0px; color: rgb(73 71 71); line-height: 24px;">
-				The Medical & Health Dictionary is a valuable reference for all groups of people, covering maximum
-				important medical &
-				health terms.
+				The E-learn is a valuable reference for all groups of people, covering maximum
+				important medical terms.
 			</h1>
-			<h1><b style="color: rgb(73 71 71); text-transform: capitalize; font-size:30px">Dictionary of Medical
-					& Health</b></h1>
+			<h1><b style="color: rgb(73 71 71); text-transform: capitalize; font-size:30px">The E-learning System :
+					<?= "<b>" . mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) as total FROM words_collection"))["total"] . " words</b>"; ?>
+				</b></h1>
 		</center>
 		<div class="containerfaq">
 			<input type="text" id="search-bar" placeholder="Search here..." />
 
 			<?php
 			// Connect to the MySQL database
-			$con = mysqli_connect("localhost", "root", "", "medicalhealth");
+			$con = mysqli_connect("localhost", "root", "", "elearn");
 
 			// Sanitize and set the sorting column
 			$sort = isset($_GET['sort']) ? htmlspecialchars($_GET['sort']) : 'title';
@@ -276,7 +276,7 @@ if ($email != false) {
 				$html .= '<input id="namec-' . $row["id"] . '" type="text" name="namec" hidden value="' . $fetch_info['name'] . '"/>';
 				$html .= '<input id="titlec-' . $row["id"] . '" type="text" name="titlec" hidden value="' . $row['title'] . '"/>';
 				$html .= '<textarea id="descriptionc-' . $row["id"] . '" rows="10" style="width: 50%;" type="text" name="descriptionc" placeholder="Add your comment..." required></textarea>';
-				$html .= '<button id="submitComments-' . $row["id"] . '" style="width: 89px !important;padding: 10px;color: white;border-radius: 8px;margin-bottom: 10px;background: blue !important;text-align: center;" type="button" onclick="submitComment(' . $row["id"] . ')">Submit</button>';
+				$html .= '<button id="submitComments-' . $row["id"] . '" style="width: 150px !important;padding: 10px;color: white;border-radius: 8px;margin-bottom: 10px;background: blue !important;text-align: center;" type="button" onclick="submitComment(' . $row["id"] . ')">Send Comment</button>';
 				$html .= '</form></center>';
 
 				$html .= '</div>';

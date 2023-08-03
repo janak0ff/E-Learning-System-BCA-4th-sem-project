@@ -3,7 +3,7 @@
 <?php
 $email = $_SESSION['email'];
 // Connect to the MySQL database
-$conn = mysqli_connect("localhost", "root", "", "medicalhealth");
+$conn = mysqli_connect("localhost", "root", "", "elearn");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }

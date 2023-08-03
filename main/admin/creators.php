@@ -41,7 +41,7 @@ if ($email != false) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Pannel - Medical & Health</title>
+    <title>Admin Pannel - E-learn</title>
     <link rel="shortcut icon" href="../images/favicon.webp" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -156,7 +156,7 @@ if ($email != false) {
 <body>
     <div
         style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding: 15px;">
-        <h1>Medical &amp; Health Creator Panel</h1>
+        <h1>E-learn Creator Panel</h1>
         <a href="../index.php"
             style="margin-left: auto; background-color: #4CAF50; font-size: 25px; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 4px; border: none;">Go
             Home</a>
@@ -172,7 +172,7 @@ if ($email != false) {
             <?php
             $name = $_SESSION['name'];
             // Connect to the MySQL database
-            $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
+            $conn = mysqli_connect("localhost", "root", "", "elearn");
             // Retrieve the total number of rows from the "words_collection" table
             $query = "SELECT COUNT(*) as total FROM words_collection  WHERE creators = '$name'";
             $result = mysqli_query($conn, $query);
@@ -203,7 +203,7 @@ if ($email != false) {
         <tbody>
             <?php
             // Connect to the MySQL database
-            $conn = mysqli_connect("localhost", "root", "", "medicalhealth");
+            $conn = mysqli_connect("localhost", "root", "", "elearn");
 
             // Initialize the $index variable
             $index = 1;

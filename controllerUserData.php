@@ -23,16 +23,14 @@ $google_client = new Google_Client();
 // $google_client->setClientSecret('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');
 
 // Set the OAuth 2.0 Client ID
-$google_client->setClientId('448418349961-tt988rmtkhekrevia5jkmtc47i2u3ea7.apps.googleusercontent.com');
+$google_client->setClientId('318982829478-aihqerpm7jfjmdtrul71ocn48umhvt3d.apps.googleusercontent.com');
 
 // Set the OAuth 2.0 Client Secret key
-$google_client->setClientSecret('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');
+$google_client->setClientSecret('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');
 
 // Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri('http://localhost/medical%20health/');
+$google_client->setRedirectUri('http://localhost/elearn/');
 
-// Set the OAuth 2.0 Redirect URI
-// $google_client->setRedirectUri('http://localhost/LoginSign/');
 
 // Set the scopes to get the email and profile
 $google_client->addScope('email profile');
@@ -64,7 +62,7 @@ if (isset($_GET["code"])) {
 
 
         // Connect to the database
-        $mysqli = mysqli_connect("localhost", "root", "", "medicalhealth");
+        $mysqli = mysqli_connect("localhost", "root", "", "elearn");
 
         // Check if the user already exists in the database
         $result = mysqli_query($mysqli, "SELECT id FROM usertable WHERE email = '$email'");
@@ -125,7 +123,7 @@ if (!isset($_SESSION['access_token'])) {
 //             // $message = "Your verification code is $code";
 //             $subject = "Email Verification Code";
 //             $recipient = $email;
-//             $message = 'Dear ' . "<b>" . $name . "</b>" . ',<br><br>' . 'Your OTP code is: ' . "<b>" . $code . "</b>" . '.<br><br>OR<br><br>Please confirm your registration by clicking on the following link:<b><a href="http://localhost/medical%20health/emailVerifyLink.php?email=' . $email . '&code=' . $code . '">click here</a></b><br><br><b>You have only 60 seconds to use the OTP and verification link.</b>';
+//             $message = 'Dear ' . "<b>" . $name . "</b>" . ',<br><br>' . 'Your OTP code is: ' . "<b>" . $code . "</b>" . '.<br><br>OR<br><br>Please confirm your registration by clicking on the following link:<b><a href="http://localhost/elearn/emailVerifyLink.php?email=' . $email . '&code=' . $code . '">click here</a></b><br><br><b>You have only 60 seconds to use the OTP and verification link.</b>';
 //             // send_mail($recipient, $subject, $message);
 //             if (send_mail($recipient, $subject, $message)) {
 //                 $info = "We've sent a four digit OTP code/ Activation link to your email <b>- $email </b>.Enter the code below to confirm your email address.";
@@ -200,7 +198,7 @@ if (isset($_POST['signup'])) {
             if (move_uploaded_file($photo_tmp_name, $photo_folder)) {
                 $subject = "Email Verification Code";
                 $recipient = $email;
-                $message = 'Dear ' . "<b>" . $name . "</b>" . ',<br><br>' . 'Your OTP code is: ' . "<b>" . $code . "</b>" . '.<br><br>OR<br><br>Please confirm your registration by clicking on the following link:<b><a href="http://localhost/medical%20health/emailVerifyLink.php?email=' . $email . '&code=' . $code . '">click here</a></b><br><br><b>You have only 60 seconds to use the OTP and verification link.</b>';
+                $message = 'Dear ' . "<b>" . $name . "</b>" . ',<br><br>' . 'Your OTP code is: ' . "<b>" . $code . "</b>" . '.<br><br>OR<br><br>Please confirm your registration by clicking on the following link:<b><a href="http://localhost/elearn/emailVerifyLink.php?email=' . $email . '&code=' . $code . '">click here</a></b><br><br><b>You have only 60 seconds to use the OTP and verification link.</b>';
 
                 if (send_mail($recipient, $subject, $message)) {
                     $info = "We've sent a four digit OTP code/ Activation link to your email <b>- $email </b>.Enter the code below to confirm your email address.";
@@ -422,7 +420,7 @@ if (isset($_POST['check-email'])) {
         if ($run_query) {
             $subject = "Password Reset Code";
             $recipient = $email;
-            $message = 'Dear ' . "<b>" . $name . "</b>" . ',<br><br>' . 'Your OTP code is: ' . "<b>" . $codeL . "</b>" . '.<br><br>OR<br><br>Please confirm your registration by clicking on the following link:<b><a href="http://localhost/medical%20health/new-passwordLink.php?email=' . $email . '&code=' . $codeL . '">click here</a></b><br><br><b>You have only 60 seconds to use the OTP and verification link.</b>';
+            $message = 'Dear ' . "<b>" . $name . "</b>" . ',<br><br>' . 'Your OTP code is: ' . "<b>" . $codeL . "</b>" . '.<br><br>OR<br><br>Please confirm your registration by clicking on the following link:<b><a href="http://localhost/elearn/new-passwordLink.php?email=' . $email . '&code=' . $codeL . '">click here</a></b><br><br><b>You have only 60 seconds to use the OTP and verification link.</b>';
             if (send_mail($recipient, $subject, $message)) {
                 $info = "We've sent a password reset otp to your email - $email";
                 $_SESSION['info'] = $info;
