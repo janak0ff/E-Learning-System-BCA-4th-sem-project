@@ -41,7 +41,7 @@ if ($email != false) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Pannel - E-learn</title>
+    <title>Admin Pannel - Medical Health</title>
     <link rel="shortcut icon" href="../images/favicon.webp" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -156,7 +156,7 @@ if ($email != false) {
 <body>
     <div
         style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding: 15px;">
-        <h1>E-learn Creator Panel</h1>
+        <h1>Medical Health Creator Panel</h1>
         <a href="../index.php"
             style="margin-left: auto; background-color: #4CAF50; font-size: 25px; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 4px; border: none;">Go
             Home</a>

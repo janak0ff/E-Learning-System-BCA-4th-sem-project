@@ -36,7 +36,7 @@ if ($email != false) {
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>E-learn :
+	<title>Medical Health :
 		<?php echo $fetch_info['name']; ?>
 	</title>
 	<link rel="shortcut icon" href="./images/favicon.webp" />
@@ -120,7 +120,7 @@ if ($email != false) {
 	<header id="main-header">
 		<nav class="navbar">
 			<a style="font-size: 3em;font-weight: 900;color: #b5b3b3;padding: 0 0 0 3em;" href="./index.php">
-				E-Learning
+				Medical Health
 			</a>
 
 			<ul>
@@ -185,10 +185,9 @@ if ($email != false) {
 	<main style="padding-top: 80px;">
 		<center style=" font-family: 'Bruno Ace', cursive;">
 			<h1 style="font-size: 20px; width: 80%; padding: 40px 0px; color: rgb(73 71 71); line-height: 24px;">
-				The E-learn is a valuable reference for all groups of people, covering maximum
-				important medical terms.
+			This is a great reference for anyone who wants to learn medical terminology, covering all the important terms.
 			</h1>
-			<h1><b style="color: rgb(73 71 71); text-transform: capitalize; font-size:30px">The E-learning System :
+			<h1><b style="color: rgb(73 71 71); text-transform: capitalize; font-size:30px">Medical Health Dictionary :
 					<?= "<b>" . mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) as total FROM words_collection"))["total"] . " words</b>"; ?>
 				</b></h1>
 		</center>
@@ -206,7 +205,7 @@ if ($email != false) {
 			$order = isset($_GET['order']) && $_GET['order'] == 'desc' ? 'DESC' : 'ASC';
 
 			// Set the number of records to display per page
-			$records_per_page = 100;
+			$records_per_page = 200;
 
 			// Get the current page number from the query string
 			$current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
