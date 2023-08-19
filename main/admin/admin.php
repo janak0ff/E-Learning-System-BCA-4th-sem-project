@@ -280,6 +280,101 @@ if ($fetch_info['role'] != 'admin') {
     <hr>
     <br><br><br>
 
+
+
+
+
+
+
+
+
+
+
+    <center>
+        <h1>contacts</h1>
+    </center>
+    <div class="header">
+        <div class="row-count">
+            <?php
+            // Connect to the MySQL database
+            $conn = mysqli_connect("localhost", "root", "", "elearn");
+
+            // Retrieve the total number of rows from the "usertable" table
+            $query = "SELECT COUNT(*) as total FROM contact";
+            $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result);
+            echo "<p>Total contact: <b>" . $row["total"] . "</b></p>";
+
+            // Close the MySQL connection
+            mysqli_close($conn);
+            ?>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-inputc" placeholder="Search...">
+        </div>
+    </div>
+
+
+    <br>
+    <table id="tablec">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Connect to the MySQL database
+            $conn = mysqli_connect("localhost", "root", "", "elearn");
+
+            if (isset($_SESSION['email'])) {
+                $email = $_SESSION['email'];
+                // Retrieve data from the "usertable" table
+                $query = "SELECT * FROM contact";
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . $row["id"] . "</td>";
+                        echo "<td>" . $row["name"] . "</td>";
+                        echo "<td>" . $row["email"] . "</td>";
+                        echo "<td class='actions'>";
+                        echo "<form action='deleteContact.php' method='post' style='display: inline-block;'>";
+                        echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                        echo "<button type='submit' class='delete-btn' onclick='return confirm(\"Are you sure you want to delete this user?\")'>Delete</button>";
+                        echo "</form>";
+                        echo "</td>";
+                        echo "<td>" . $row["message"] . "</td>";
+                        echo "</tr>";
+
+
+                    }
+                } else {
+                    echo "No records found.";
+                }
+            } else {
+                echo "Please log in to view this page.";
+            }
+
+            // Close the MySQL connection
+            mysqli_close($conn);
+            ?>
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+<br><br>
     <center>
         <h1>Contents</h1>
     </center>
@@ -395,6 +490,27 @@ if ($fetch_info['role'] != 'admin') {
                     rowsm[i].style.display = '';
                 } else {
                     rowsm[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
+        <script>
+        // Get the search input element
+        const searchInputC = document.getElementById('search-inputc');
+        // Get the table element
+        const tableC = document.getElementById('tablec');
+        // Get all the rows in the table body
+        const rowsc = tableC.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+        // Add an event listener to the search input element
+        searchInputC.addEventListener('input', function (event) {
+            const searchText = event.target.value.toLowerCase();
+            for (let i = 0; i < rowsc.length; i++) {
+                const title = rowsc[i].getElementsByTagName('td')[1].textContent.toLowerCase();
+                if (title.includes(searchText)) {
+                    rowsc[i].style.display = '';
+                } else {
+                    rowsc[i].style.display = 'none';
                 }
             }
         });
