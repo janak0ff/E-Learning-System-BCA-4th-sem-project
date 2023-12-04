@@ -1,66 +1,27 @@
-<?php require_once "controllerUserData.php"; ?>
 <?php
-$email = $_SESSION['email'];
-if ($email == false) {
-    header('Location: login-user.php');
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $to = $email;
+    $subject = "Welcome to Our Website";
+    $message = "Hello $username,\n\nThank you for registering on our website!";
+    $headers = "From: your@example.com"; // Change this to a valid sender email address
+    if (mail($to, $subject, $message, $headers)) {
+        $message = "Registration successful! An email has been sent to your email address.";
+    } else {
+        $message = "Registration successful! However, there was an issue sending the email.";
+    }
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Create a New Password</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./main/images/favicon.webp" />
-    
-    <link rel="stylesheet" href="style.css">
-    <script src="./script.js"></script>
-</head>
-
+<html>
+<head><title>Registration Form with Email</title></head>
 <body>
-    <section class="container forms">
-        <div class="form login">
-            <div class="form-content">
-                <form action="new-password.php" method="POST" autocomplete="off">
-                    <h2 class="text-center">Create New Password</h2>
-                    <?php
-                    if (isset($_SESSION['info'])) {
-                    ?>
-                        <div style="color: black;text-align: center;background: #6dc2d4b3;border-radius: 5px;padding: 6px;">
-                            <?php echo $_SESSION['info']; ?>
-                        </div>
-                    <?php
-                    }
-                    ?>
-                    <?php
-                    if (count($errors) > 0) {
-                    ?>
-                        <div style="color: black;text-align: center;background: #ecb1b1;border-radius: 5px;padding: 6px;">
-                            <?php
-                            foreach ($errors as $showerror) {
-                                echo $showerror;
-                            }
-                            ?>
-                        </div>
-                    <?php
-                    }
-                    ?>
-                    <div class="field input-field">
-                        <input type="password" name="password" placeholder="Create new password" required>
-                    </div>
-                    <div class="field input-field">
-                        <input type="password" name="cpassword" placeholder="Confirm your password" required>
-                    </div>
-                    <div class="field input-field">
-                        <input class="form-control button" type="submit" name="change-password" value="Change">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-</body>
-
-</html>
+<h2>Registration Form</h2>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    Username: <input type="text" name="username" required><br><br>
+    Email: <input type="email" name="email" required><br><br>
+    <input type="submit" name="register" value="Register">
+</form>
+<p><?php echo isset($message) ? $message : ""; ?></p>
+</body></html>
